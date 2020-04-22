@@ -7,14 +7,8 @@ package scenemenagerproject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 
-
-public class logowanie {
-
-    @FXML
-    private TextField sam_marka, sam_model, sam_kolor,sam_moc,sam_miejsc,sam_drzwi,sam_oddzial;
-    
+public class rejestracja {
     
     
 }
