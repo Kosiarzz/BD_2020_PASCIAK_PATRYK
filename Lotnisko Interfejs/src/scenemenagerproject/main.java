@@ -16,7 +16,7 @@ public class main extends Application {
         SceneMenager.addScene("logowanie", "/sceny/logowanie.fxml");
         SceneMenager.addScene("rejestracja", "/sceny/rejestracja.fxml");
         
-        SceneMenager.renderScene("uzytkownik");
+        SceneMenager.renderScene("rejestracja");
     }
 
  
