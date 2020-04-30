@@ -17,137 +17,137 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #38b0d1;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenemenagerproject.Uzytkownik">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #38b0d1;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenemenagerproject.pracownik">
   <tabs>
       <Tab text="Zarezerwuj">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView layoutX="14.0" layoutY="48.0" prefHeight="341.0" prefWidth="501.0" style="-fx-border-color: #2e6ef0;">
+                  <TableView fx:id="tLoty" layoutX="14.0" layoutY="48.0" prefHeight="341.0" prefWidth="501.0" style="-fx-border-color: #2e6ef0;">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Start" />
-                      <TableColumn prefWidth="75.0" text="Lądowanie" />
-                        <TableColumn prefWidth="93.0" text="Do" />
-                        <TableColumn prefWidth="57.0" text="Miejsc" />
-                        <TableColumn prefWidth="75.0" text="Status" />
+                      <TableColumn fx:id="tStart" prefWidth="75.0" text="Start" />
+                      <TableColumn fx:id="tLadowanie" prefWidth="75.0" text="Lądowanie" />
+                        <TableColumn fx:id="tDo" prefWidth="93.0" text="Do" />
+                        <TableColumn fx:id="tMiejsc" prefWidth="57.0" text="Miejsc" />
+                        <TableColumn fx:id="tStatus" prefWidth="75.0" text="Status" />
                     </columns>
                   </TableView>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e0f2" height="260.0" layoutX="563.0" layoutY="52.0" stroke="BLACK" strokeType="INSIDE" width="196.0" />
                   <DatePicker layoutX="206.0" layoutY="449.0" prefHeight="25.0" prefWidth="125.0" />
                   <Line endX="6.0" endY="261.0" layoutX="558.0" layoutY="51.0" startX="6.0" startY="3.0" />
                   
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" height="27.0" layoutX="578.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="578.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m1" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="578.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0" />
+                  <Rectangle fx:id="m5" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="578.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="578.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m9" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="578.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="578.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m13" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="578.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="578.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m17" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="578.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="578.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m21" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="578.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="619.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m2" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="619.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="619.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m6" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="619.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5ff39" height="27.0" layoutX="619.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m10" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="619.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="619.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m14" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="619.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3dcd20" height="27.0" layoutX="619.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m18" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="619.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9e9e" height="27.0" layoutX="619.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m22" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="619.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="679.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m3" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="679.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="720.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m4" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="720.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="679.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m7" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="679.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="720.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m8" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="720.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="679.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m11" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="679.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="720.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m12" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="720.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="679.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m15" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="679.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="720.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m16" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="720.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="679.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m19" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="679.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="720.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m20" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="720.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="679.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m23" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="679.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="27.0" layoutX="720.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                  <Rectangle fx:id="m24" arcHeight="5.0" arcWidth="5.0" fill="GREY" height="27.0" layoutX="720.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -210,7 +210,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button layoutX="208.0" layoutY="517.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
+                  <Button layoutX="208.0" layoutY="517.0" mnemonicParsing="false" onAction="#wyszukaj" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -223,7 +223,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Rectangle>
-                  <TextField layoutX="27.0" layoutY="449.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Zwmiejscowosc" layoutX="27.0" layoutY="449.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor></TextField>
@@ -240,7 +240,7 @@
                   <Label layoutX="553.0" layoutY="319.0" text="Dostępne" />
                   <Label layoutX="644.0" layoutY="319.0" text="Zajęte" />
                   <Label layoutX="716.0" layoutY="319.0" text="Nieaktywne" />
-                  <TextField layoutX="587.0" layoutY="407.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Znrmiejsca" layoutX="587.0" layoutY="407.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor></TextField>
@@ -260,7 +260,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="370.0" layoutY="449.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Zwnrlotu" layoutX="370.0" layoutY="449.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor></TextField>
@@ -275,7 +275,7 @@
                         <Image url="@../img/LogoLOT.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="601.0" layoutY="517.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Zarezerwuj" textFill="WHITE">
+                  <Button layoutX="601.0" layoutY="517.0" mnemonicParsing="false" onAction="#zarezerwuj" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Zarezerwuj" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -288,7 +288,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="587.0" layoutY="463.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Zpesel" layoutX="587.0" layoutY="463.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -356,7 +356,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <Button layoutX="317.0" layoutY="499.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Zmień dane" textFill="WHITE">
+                  <Button layoutX="317.0" layoutY="499.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Dodaj" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

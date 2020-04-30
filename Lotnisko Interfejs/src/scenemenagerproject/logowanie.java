@@ -117,7 +117,7 @@ public class logowanie implements Initializable {
         //step4 execute query  
         ResultSet rs=stmt.executeQuery("select * from PRACOWNICY_LOGOWANIE where LOGIN='"+zlogin+"' AND HASLO='"+zhaslo+"'");  
         while(rs.next()){
-            System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5));
+           // System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5));
             if("Pracownik".equals(rs.getString(4)))
             {
                 System.out.println("Logowanie uzytkownik");
@@ -134,7 +134,7 @@ public class logowanie implements Initializable {
             }
         }
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Koniec połaczenia");
            blad.setText("Podany login lub hasło jest nieprawidłowe!");
            blad.setVisible(true);
         }
