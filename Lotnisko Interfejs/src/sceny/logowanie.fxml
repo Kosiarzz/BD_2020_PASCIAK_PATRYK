@@ -14,18 +14,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #38b0d1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenemenagerproject.logowanie">
    <children>
-      <TextField layoutX="224.0" layoutY="146.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+      <TextField fx:id="Login" layoutX="224.0" layoutY="146.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <Button layoutX="252.0" layoutY="276.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Zaloguj" textFill="WHITE">
+      <PasswordField fx:id="Haslo" layoutX="223.0" layoutY="187.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;" />
+      <Button layoutX="252.0" layoutY="276.0" mnemonicParsing="false" onAction="#Zaloguj" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Zaloguj" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="228.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #38b0d1;" text="Rejestracja konta" textFill="WHITE">
+      <Button layoutX="228.0" layoutY="356.0" mnemonicParsing="false" onAction="#Zarejestruj" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #38b0d1;" text="Rejestracja konta" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -45,7 +46,7 @@
             <Image url="@../img/LogoLOT.png" />
          </image>
       </ImageView>
-      <Label layoutX="160.0" layoutY="327.0" text="Podany login lub hasło jest nieprawidłowe!" textAlignment="CENTER" textFill="RED">
+      <Label fx:id="blad" alignment="CENTER" layoutX="160.0" layoutY="327.0" prefHeight="21.0" prefWidth="284.0" text="Podany login lub hasło jest nieprawidłowe!" textAlignment="CENTER" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>
@@ -55,15 +56,14 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <MenuButton layoutX="224.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: white;" text="Wybierz" textAlignment="CENTER">
+      <MenuButton fx:id="wybor" layoutX="224.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: white;" text="Wybierz" textAlignment="CENTER">
         <items>
-          <MenuItem mnemonicParsing="false" text="Klient" />
-          <MenuItem mnemonicParsing="false" text="Pracownik" />
+          <MenuItem fx:id="Klient" mnemonicParsing="false" onAction="#cklient" text="Klient" />
+          <MenuItem fx:id="Pracownik" mnemonicParsing="false" onAction="#cpracownik" text="Pracownik" />
         </items>
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </MenuButton>
-      <PasswordField layoutX="223.0" layoutY="187.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;" />
    </children>
 </AnchorPane>

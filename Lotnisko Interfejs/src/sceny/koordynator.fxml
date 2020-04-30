@@ -414,7 +414,7 @@
                         <Image url="@../img/LogoLOT.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="302.0" layoutY="286.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyloguj" textFill="WHITE">
+                  <Button layoutX="302.0" layoutY="286.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyloguj" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

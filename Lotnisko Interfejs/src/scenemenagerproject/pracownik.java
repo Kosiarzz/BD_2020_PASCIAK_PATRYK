@@ -5,10 +5,22 @@
  */
 package scenemenagerproject;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
-public class pracownik {
+public class pracownik implements Initializable {
     
+    @FXML
+    private void wyloguj(){
+        SceneMenager.renderScene("logowanie");
+    }
+        
+    @Override 
+    public void initialize(URL url, ResourceBundle rb) {
+        
+    }
     
 }
