@@ -19,6 +19,8 @@ import javafx.scene.control.PasswordField;
 
 public class logowanie implements Initializable {
     
+    public String LOGIN;
+    
     @FXML
     private TextField Login;
     
@@ -40,6 +42,9 @@ public class logowanie implements Initializable {
     private void Zaloguj(){
         zlogin = Login.getText();
         zhaslo = Haslo.getText();
+        logowanie log = new logowanie();
+        LOGIN = zlogin;
+        
         System.out.println(zlogin+" "+zhaslo);
         if("Klient".equals(wybor.getText()))
         {
