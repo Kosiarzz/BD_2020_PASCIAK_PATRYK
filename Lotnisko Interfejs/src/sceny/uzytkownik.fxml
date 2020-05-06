@@ -353,16 +353,16 @@
                   </Button>
                   <TableView fx:id="Htable" layoutX="13.0" layoutY="105.0" prefHeight="393.0" prefWidth="774.0">
                      <columns>
-                        <TableColumn fx:id="HID" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="Hnr_rezerwacji" prefWidth="110.0" text="Numer rezerwacji" />
-                        <TableColumn fx:id="Hnr_lotu" prefWidth="75.0" text="Numer lotu" />
-                        <TableColumn fx:id="Hstart" prefWidth="75.0" text="Start" />
+                        <TableColumn fx:id="HID" prefWidth="75.0" text="ID" visible="false" />
+                        <TableColumn fx:id="Hnr_rezerwacji" prefWidth="64.0" text="Numer rezerwacji" />
+                        <TableColumn fx:id="Hnr_lotu" prefWidth="74.0" text="Numer lotu" />
+                        <TableColumn fx:id="Hstart" prefWidth="132.0" text="Start" />
                         <TableColumn fx:id="Hz" prefWidth="75.0" text="Z" />
-                        <TableColumn fx:id="Hladowanie" prefWidth="75.0" text="Lądowanie" />
+                        <TableColumn fx:id="Hladowanie" prefWidth="135.0" text="Lądowanie" />
                         <TableColumn fx:id="Hw" prefWidth="75.0" text="W" />
-                        <TableColumn fx:id="Hnr_miejsca" prefWidth="102.0" text="Numer miejsca" />
-                        <TableColumn fx:id="Hsamolot" prefWidth="75.0" text="Samolot" />
-                        <TableColumn fx:id="Hstatus" prefWidth="82.0" text="Status" />
+                        <TableColumn fx:id="Hnr_miejsca" prefWidth="70.0" text="Numer miejsca" />
+                        <TableColumn fx:id="Hsamolot" prefWidth="73.0" text="Samolot" />
+                        <TableColumn fx:id="Hstatus" prefWidth="75.0" text="Status" />
                      </columns>
                   </TableView>
                </children></AnchorPane>
@@ -464,12 +464,12 @@
                      </cursor>
                   </Button>
                   <Line endX="13.0" endY="240.0" layoutX="414.0" layoutY="285.0" startX="13.0" startY="-181.0" />
-                  <Label fx:id="Dbdane" layoutX="118.0" layoutY="426.0" text="Uzupełnij wszystkie pola!" textFill="RED">
+                  <Label fx:id="Dbdane" layoutX="118.0" layoutY="426.0" text="Uzupełnij wszystkie pola!" textFill="RED" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Dblogin" layoutX="525.0" layoutY="426.0" text="Uzupełnij wszystkie pola!" textFill="RED">
+                  <Label fx:id="Dblogin" layoutX="525.0" layoutY="426.0" text="Uzupełnij wszystkie pola!" textFill="RED" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>

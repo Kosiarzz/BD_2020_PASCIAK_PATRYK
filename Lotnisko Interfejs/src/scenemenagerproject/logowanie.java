@@ -46,19 +46,25 @@ public class logowanie implements Initializable {
         LOGIN = zlogin;
         
         System.out.println(zlogin+" "+zhaslo);
-        if("Klient".equals(wybor.getText()))
+        if("Klient".equals(wybor.getText()) && sprawdzenie_danych())
         {
             System.out.println("Logowanie klient");
             polaczenie_klient();
         }
-        else if("Pracownik".equals(wybor.getText()))
+        else if("Pracownik".equals(wybor.getText()) && sprawdzenie_danych())
         {
             System.out.println("Logowanie pracownik");
             polaczenie_pracownik();
         }
+        else if(!sprawdzenie_danych())
+        {
+            System.out.println("Nie podano danych logowania.");
+            blad.setText("Wprowadź dane do logowania!");
+            blad.setVisible(true);
+        }
         else
         {
-            System.out.println("Wybierz coś!");
+            System.out.println("Nie wybrano typu konta.");
             blad.setText("Wybierz typ konta!");
             blad.setVisible(true);
         }
@@ -101,7 +107,7 @@ public class logowanie implements Initializable {
             SceneMenager.renderScene("uzytkownik");
         }
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Podany login lub hasło jest nieprawidłowe.");
            blad.setText("Podany login lub hasło jest nieprawidłowe!");
            blad.setVisible(true);
         }
@@ -139,7 +145,7 @@ public class logowanie implements Initializable {
             }
         }
         con.close();  
-           System.out.println("Koniec połaczenia");
+           System.out.println("Podany login lub hasło jest nieprawidłowe.");
            blad.setText("Podany login lub hasło jest nieprawidłowe!");
            blad.setVisible(true);
         }
@@ -147,6 +153,40 @@ public class logowanie implements Initializable {
         { 
             System.out.println(e);
         } 
+    }
+    
+    private boolean sprawdzenie_danych(){
+        
+        String login,haslo,wynik="FALSE";
+        login = Login.getText();
+        haslo = Haslo.getText();
+        
+        
+         try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call LOGOWANIE('"+login+"','"+haslo+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
     }
     
 }  

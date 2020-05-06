@@ -6,10 +6,12 @@
 package scenemenagerproject;
 
 import java.net.URL;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +32,7 @@ import klasy.Zarezerwowane;
 
 public class Uzytkownik  implements Initializable {
     
+    int KONTOID=2;
     String LOG="klient1";
     
     @FXML
@@ -116,14 +119,60 @@ public class Uzytkownik  implements Initializable {
     //////////////////////////////////////////DANE//////////////////////////////////
     @FXML
     private void Dzmien_dane(){
-        System.out.println("Zmienam dane");
-        zmiendane();
+        if(uzytkownikdane())
+        {
+            if(sprawdzenie_pesel()){
+                if(Dpesel.getText().matches("[0-9]+") && Dtelefon.getText().matches("[0-9]+"))
+                {
+                    Dbdane.setVisible(false);
+                    System.out.println("Zmienam dane");
+                    zmiendane();
+                }
+                else
+                {
+                    System.out.println("Niepoprawny format danych.");
+                    Dbdane.setText("Niepoprawne dane!");
+                    Dbdane.setVisible(true);
+                }
+            }
+            else
+            {
+                System.out.println("Pesel telefon");
+                Dbdane.setText("Niepoprawne dane!");
+                Dbdane.setVisible(true);
+            }
+        }
+        else
+        {
+            System.out.println("Uzupełnij pola.");
+            Dbdane.setText("Uzupełnij wszystkie pola!");
+            Dbdane.setVisible(true);
+        }
     }
     
     @FXML
     private void Dzmien_dane_logowania(){
-        System.out.println("Zmieniam daneL");
-        zmiendanelogowanie();
+        if(uzytkowniklogowanie())
+        {
+            if(sprawdzenie_haslo())
+            {
+                Dblogin.setVisible(false);
+                System.out.println("Zmieniam daneL");
+                zmiendanelogowanie();
+            }
+            else
+            {
+                System.out.println("Hasła się nie zgadzają.");
+                Dblogin.setText("Podane hasła nie są takie same!");
+                Dblogin.setVisible(true); 
+            }
+        }
+        else
+        {
+            System.out.println("Uzupełnij pola");
+            Dblogin.setText("Uzupełnij wszystkie pola!");
+            Dblogin.setVisible(true);
+        }
     }
     
     ///////////////////////////////////////////////Wyloguj////////////////////////////
@@ -134,10 +183,11 @@ public class Uzytkownik  implements Initializable {
     
     @Override 
     public void initialize(URL url, ResourceBundle rb) {   
-        wstaw_tekst_do_pola_anuluj();
+         wstaw_tekst_do_pola_anuluj();
         //Dimie.setText("IMIE");
          polaczenie_loty();
-         System.out.println(LOG);
+         Historia_polaczenie();
+         System.out.println("Zalogowany: "+LOG);
     }
     
     
@@ -165,17 +215,18 @@ public class Uzytkownik  implements Initializable {
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
 
-        /*//step4 execute query  
-        ResultSet rs=stmt.executeQuery("select L.ID_LOT, L.NUMER_LOTU, (SELECT MODEL FROM SAMOLOTY WHERE ID_SAMOLOT=L.ID_SAMOLOT), L.DOSTEPNE_MIEJSCA, L.STARTOWANIE, L.LADOWANIE, L.POWROT, L.STATUS, L.Z, L.DO from LOTY L,SAMOLOTY WHERE NUMER_LOTU='"+ZWnrlotu.getText()+"' OR DO='"+ZWmiejscowosc.getText()+"'"); 
+        //step4 execute query  
+        ResultSet rs=stmt.executeQuery("SELECT R.NUMER_LOTU, (SELECT MODEL FROM SAMOLOTY WHERE ID_SAMOLOT=L.ID_SAMOLOT), L.STARTOWANIE, L.LADOWANIE, L.STATUS, L.Z, L.DO, R.NUMER_MIEJSCA, R.ID_KLIENT, R.NUMER_REZERWACJI FROM REZERWACJE R,LOTY L, SAMOLOTY S WHERE R.ID_KLIENT='patryk'"); 
         while(rs.next()){
-            System.out.println(rs.getInt(1)+"  "+rs.getInt(2)+"  "+rs.getString(3)+"  "+rs.getInt(4)+"  "+rs.getString(5) +"  "+rs.getString(6) +"  "+rs.getString(7) +"  "+rs.getString(8) +"  "+rs.getString(9) +"  "+rs.getString(10));
-            Zarezerwowane zar = new Zarezerwowane(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(3),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+            //System.out.println("       NUMER-LOTU , MODEL,               STARTOWANIE         LADOWANIE        STATUS                  Z                    DO                         NRMIEJSCA      IDKLIENT                   NRREZERWACJA      ");
+            System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5) +"  "+rs.getString(6) +"  "+rs.getString(7) +"  "+rs.getString(8) +"  "+rs.getString(9) +"  "+rs.getString(10));
+            Zarezerwowane zar = new Zarezerwowane(0,rs.getString(10),rs.getString(1),rs.getString(8),rs.getString(3),rs.getString(6),rs.getString(4),rs.getString(7),rs.getString(2),rs.getString(5));
         
             rezerwacja.add(zar);  
 
-         }*/
+         }
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Wczytano historie połączeń.");
         }
         catch(Exception e)
         { 
@@ -203,7 +254,7 @@ public class Uzytkownik  implements Initializable {
 
          }*/
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Anuluj polaczenie2");
         }
         catch(Exception e)
         { 
@@ -245,7 +296,7 @@ public class Uzytkownik  implements Initializable {
 
          }*/
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Anuluj polaczenie");
         }
         catch(Exception e)
         { 
@@ -292,14 +343,41 @@ public class Uzytkownik  implements Initializable {
          
         
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Dane zostały zmienione.");
         }
         catch(Exception e)
         { 
             System.out.println(e);
+        } 
+     }
+     
+     private boolean uzytkownikdane(){
+         String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call UZYTKOWNIKDANE('"+Dimie.getText()+"','"+Dnazwisko.getText()+"','"+Dadres.getText()+"','"+Dpesel.getText()+"','"+Dtelefon.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
         }
-        
-        
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
      }
      
      private void zmiendanelogowanie(){
@@ -319,7 +397,7 @@ public class Uzytkownik  implements Initializable {
         stmt.executeUpdate("SELECT KLIENT SET LOGIN='"+login+"' WHERE LOGIN='"+LOG+"'");
         stmt.executeUpdate("SELECT KLIENCI_LOGOWANIE SET LOGIN='"+login+"', HASLO='"+haslo+"' WHERE LOGIN='"+LOG+"' ");
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Zmieniono dane logowania");
         }
         catch(Exception e)
         { 
@@ -327,6 +405,95 @@ public class Uzytkownik  implements Initializable {
         }
         LOG = login;
      }
+     
+     private boolean uzytkowniklogowanie(){
+         String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call UZYTKOWNIKLOGOWANIE('"+Dlogin.getText()+"','"+Dhaslo.getText()+"','"+Dphaslo.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+     }
+     
+      private boolean sprawdzenie_haslo(){
+            //slogin, simie, snazwisko, sadres, spesel, stelefon, shaslo, sphaslo;
+          String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call HASLO('"+Dhaslo.getText()+"','"+Dphaslo.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+      
+      private boolean sprawdzenie_pesel(){
+            //slogin, simie, snazwisko, sadres, spesel, stelefon, shaslo, sphaslo;
+          String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call PESEL('"+Dpesel.getText()+"','"+Dtelefon.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
      
      private void polaczenie_loty(){
         
@@ -362,7 +529,7 @@ public class Uzytkownik  implements Initializable {
          }
         
          tLoty.setItems(loty);
-        System.out.println("Dodales");
+        System.out.println("Wczytano loty.");
         con.close();  
         
         
@@ -406,7 +573,7 @@ public class Uzytkownik  implements Initializable {
 
          }
         con.close();  
-           System.out.println("KOniec połaczenia");
+           System.out.println("Wyszukiwanie lotów...");
         }
         catch(Exception e)
         { 

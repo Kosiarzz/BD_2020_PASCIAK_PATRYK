@@ -6,10 +6,12 @@
 package scenemenagerproject;
 
 import java.net.URL;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,9 +45,28 @@ public class rejestracja implements Initializable {
         stelefon = telefon.getText();
          
         
-        
-        polaczenie();
-        System.out.println("Polacznie");
+        if(sprawdzenie_danych())
+        {
+            System.out.println("Pola uzupełnione.");
+            blad.setVisible(false);
+            if(sprawdzenie_haslo())
+            {
+                System.out.println("Hasła poprawne.");
+                System.out.println("Tworzenie konta...");
+                blad.setVisible(false);
+                polaczenie();
+            }
+            else
+            {
+                blad.setText("Hasła nie są takie same!");
+                blad.setVisible(true);
+            }
+        }
+        else
+        {
+            blad.setText("Musisz uzupełnić wszystkie pola!");
+            blad.setVisible(true);
+        }
         
     }
     
@@ -74,7 +95,7 @@ public class rejestracja implements Initializable {
         stmt.executeUpdate("INSERT INTO KLIENCI_LOGOWANIE (LOGIN,HASLO)" + "VALUES ('"+slogin+"', '"+shaslo+"')");  
         stmt.executeUpdate("INSERT INTO KLIENT (IMIE,NAZWISKO,ADRES,PESEL,TELEFON,LOGIN)" + "VALUES ('"+simie+"', '"+snazwisko+"', '"+sadres+"','"+spesel+"','"+stelefon+"','"+slogin+"')");
      
-        System.out.println("Dodales");
+        System.out.println("Konto stworzone.");
         con.close();  
         }
         catch(Exception e)
@@ -82,6 +103,66 @@ public class rejestracja implements Initializable {
             System.out.println(e);
         } 
         
+    }
+    
+    private boolean sprawdzenie_danych(){
+            //slogin, simie, snazwisko, sadres, spesel, stelefon, shaslo, sphaslo;
+          String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call REJESTRACJA('"+simie+"','"+snazwisko+"','"+sadres+"','"+spesel+"','"+stelefon+"','"+slogin+"','"+shaslo+"','"+sphaslo+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+    
+    private boolean sprawdzenie_haslo(){
+            //slogin, simie, snazwisko, sadres, spesel, stelefon, shaslo, sphaslo;
+          String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call HASLO('"+shaslo+"','"+sphaslo+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
     }
     
 }

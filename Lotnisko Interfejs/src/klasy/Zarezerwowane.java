@@ -4,10 +4,10 @@ package klasy;
 public class Zarezerwowane {
     
     
-    int nr_rezerwacji, nr_lotu, nr_miejsca, ID;
-    String start,z,ladowanie,w,samolot,status;  
+    int ID;
+    String nr_lotu,start,z,ladowanie,w,samolot,status,nr_rezerwacji,nr_miejsca;  
 
-    public Zarezerwowane(int ID, int nr_rezerwacji, int nr_lotu, int nr_miejsca, String start, String z, String ladowanie, String w, String samolot, String status) {
+    public Zarezerwowane(int ID, String nr_rezerwacji, String nr_lotu, String nr_miejsca, String start, String z, String ladowanie, String w, String samolot, String status) {
         this.ID = ID;
         this.nr_rezerwacji = nr_rezerwacji;
         this.nr_lotu = nr_lotu;
@@ -28,27 +28,27 @@ public class Zarezerwowane {
         this.ID = ID;
     }
     
-    public int getNr_rezerwacji() {
+    public String getNr_rezerwacji() {
         return nr_rezerwacji;
     }
 
-    public void setNr_rezerwacji(int nr_rezerwacji) {
+    public void setNr_rezerwacji(String nr_rezerwacji) {
         this.nr_rezerwacji = nr_rezerwacji;
     }
 
-    public int getNr_lotu() {
+    public String getNr_lotu() {
         return nr_lotu;
     }
 
-    public void setNr_lotu(int nr_lotu) {
+    public void setNr_lotu(String nr_lotu) {
         this.nr_lotu = nr_lotu;
     }
 
-    public int getNr_miejsca() {
+    public String getNr_miejsca() {
         return nr_miejsca;
     }
 
-    public void setNr_miejsca(int nr_miejsca) {
+    public void setNr_miejsca(String nr_miejsca) {
         this.nr_miejsca = nr_miejsca;
     }
 

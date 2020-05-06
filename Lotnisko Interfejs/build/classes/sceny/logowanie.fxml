@@ -46,7 +46,7 @@
             <Image url="@../img/LogoLOT.png" />
          </image>
       </ImageView>
-      <Label fx:id="blad" alignment="CENTER" layoutX="160.0" layoutY="327.0" prefHeight="21.0" prefWidth="284.0" text="Podany login lub hasło jest nieprawidłowe!" textAlignment="CENTER" textFill="RED">
+      <Label fx:id="blad" alignment="CENTER" layoutX="160.0" layoutY="327.0" prefHeight="21.0" prefWidth="284.0" text="Podany login lub hasło jest nieprawidłowe!" textAlignment="CENTER" textFill="RED" visible="false">
          <font>
             <Font size="15.0" />
          </font>
