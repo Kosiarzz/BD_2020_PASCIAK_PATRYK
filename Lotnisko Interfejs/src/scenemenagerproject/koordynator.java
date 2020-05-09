@@ -6,10 +6,12 @@
 package scenemenagerproject;
 
 import java.net.URL;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -82,28 +84,63 @@ public class koordynator  implements Initializable {
     //////////////////////////DODAJ LOT/////////////////
     @FXML
     private void dodaj_lot(){
+        if(sprawdzdodajlot()){
+            Dblad.setVisible(false);
         System.out.println("Dodaje");
         dodajlot();
+        }
+        else
+        {
+           Dblad.setText("Uzupełnij wszystkie pola!");
+           Dblad.setVisible(true);
+        }
     }
     
     //////////////////////////EDYTUJ LOT/////////////////
     @FXML
     private void Ezmiany(){
-        System.out.println("zapisuje");
-        Ezmien();
+        if(polczeniewyszukajdane())
+        {
+            Ebzmiany.setVisible(false);
+            System.out.println("Szukam");
+            Ezmien();
+        }
+        else
+        {
+            Ebzmiany.setText("Uzupełnij wszystkie pola!");
+            Ebzmiany.setVisible(true);
+        }
     }
     
     @FXML 
     private void Ewyszukaj(){
-        System.out.println("Szukam");
-        polaczenie_Ewyszukaj();
+        
+        if(edytujlotdane())
+        {
+            Ebwyszukaj.setVisible(false);
+            System.out.println("Podano numer");
+            polaczenie_Ewyszukaj();
+        }
+        else
+        {
+            Ebwyszukaj.setVisible(true);
+        }
         
     }
     //////////////////USUN LOT//////////////////////////////
     @FXML
     private void Uwyszukaj(){
+        if(usunwyszukajpolaczenie())
+        {
+            Ublad.setVisible(false);
         System.out.println("Szukam");
         Usunwyszukaj();
+        }
+        else
+        {
+            Ublad.setText("Podaj numer lotu!");
+            Ublad.setVisible(true);
+        }
     }
     
     @FXML
@@ -185,6 +222,22 @@ public class koordynator  implements Initializable {
         });
     }
     
+     private void pobierz_tekst_usun()
+    {
+        Utable.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                Samolot odd = Dtable.getItems().get(Dtable.getSelectionModel().getSelectedIndex());
+                IDSAMOLOT = odd.getID();
+                samolot.setText(String.valueOf(odd.getModel()));
+                System.out.println(IDSAMOLOT);
+                
+            }
+        });
+    }
+    
     private void dodajlot(){
         
         String start,ladowanie,powrot,miejs,samolo;
@@ -204,16 +257,23 @@ public class koordynator  implements Initializable {
         System.out.println("Miejscowosc: " + miejs);
         samolo = samolot.getText();
         System.out.println("Samolot: " + samolo);
-      
+        int wynik=0,wynikd=0;
          try{   
         Class.forName("oracle.jdbc.driver.OracleDriver");  
         Connection con=DriverManager.getConnection(  
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
-
-        //step4 execute query  
         
-        stmt.executeUpdate("INSERT INTO LOTY (NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO)" + "VALUES ('0', '1', '24','"+start+"','"+ladowanie+"','"+powrot+"','Dostępny','KorsarzLOT','"+miejs+"')");
+        
+        //step4 execute query  
+        ResultSet rs=stmt.executeQuery("SELECT NUMER_LOTU FROM NUMERY_LOTOW"); 
+         while(rs.next()){
+             System.out.println(rs.getString(1));
+             wynik = Integer.parseInt( rs.getString(1));
+             wynikd = wynik+1;
+         }
+        stmt.executeUpdate("UPDATE NUMERY_LOTOW SET NUMER_LOTU='"+wynikd+"'");
+        stmt.executeUpdate("INSERT INTO LOTY (NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO)" + "VALUES ('"+wynik+"', '1', '24','"+start+"','"+ladowanie+"','"+powrot+"','Dostępny','KorsarzLOT','"+miejs+"')");
      
         
         con.close();  
@@ -226,6 +286,35 @@ public class koordynator  implements Initializable {
 
      }
     
+    private boolean sprawdzdodajlot(){
+        
+        String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call DODAJLOTSPR('"+startg.getText()+"','"+startd.getValue()+"','"+ladowanieg.getText()+"','"+ladowanied.getValue()+"','"+powrotg.getText()+"','"+powrotd.getValue()+"','"+miejscowosc.getText()+"','"+samolot.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
     
     
     
@@ -295,11 +384,11 @@ public class koordynator  implements Initializable {
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
             System.out.println(Enr_lotu.getText());
-        ResultSet rs=stmt.executeQuery("SELECT * FROM LOTY WHERE NUMER_LOTU='"+Enr_lotu.getText()+"'"); 
+        ResultSet rs=stmt.executeQuery("SELECT L.ID_LOT,L.NUMER_LOTU,L.ID_SAMOLOT,L.DOSTEPNE_MIEJSCA,L.STARTOWANIE,L.LADOWANIE,L.POWROT,L.STATUS,L.Z,L.DO,S.ID_SAMOLOT,S.MODEL FROM LOTY L, SAMOLOTY S WHERE L.NUMER_LOTU='"+Enr_lotu.getText()+"'"); 
          while(rs.next()){
-            System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10));
+            System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10) +" "+rs.getInt(11) + " "+rs.getString(12));
             EIDLOT = rs.getInt(1);
-            Esamolot.setText(String.valueOf(rs.getInt(3)));
+            Esamolot.setText(String.valueOf(rs.getString(12)));
             Emiejsc.setText(String.valueOf(rs.getInt(4)));
             Estartd.setText(rs.getString(5));
             Eladowanied.setText(rs.getString(6));
@@ -308,6 +397,7 @@ public class koordynator  implements Initializable {
             Emiejscowosc.setText(rs.getString(10));
             
          } 
+
         
         con.close();  
            System.out.println("KOniec połaczenia");
@@ -317,6 +407,36 @@ public class koordynator  implements Initializable {
             System.out.println(e);
         }
         
+    }
+    
+    private boolean polczeniewyszukajdane(){
+        
+        String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call EDYTUJLOTDANE('"+Estartd.getText()+"','"+Eladowanied.getText()+"','"+Epowrotd.getText()+"','"+Emiejscowosc.getText()+"','"+Estatus.getText()+"','"+Emiejsc.getText()+"','"+Esamolot.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
     }
     
     private void Ezmien(){
@@ -421,7 +541,65 @@ public class koordynator  implements Initializable {
          Utable.setItems(loty);
     }
     
-    private void Usun(){
+    private boolean edytujlotdane(){
+        
+         String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call NUMERLOTU('"+Enr_lotu.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        
+    }
+    
+    private boolean usunwyszukajpolaczenie(){
+        
+         String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call NUMERLOTU('"+Unumer.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         
     }
 }

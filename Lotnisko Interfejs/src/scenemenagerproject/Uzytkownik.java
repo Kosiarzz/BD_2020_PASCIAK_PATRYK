@@ -33,7 +33,13 @@ import klasy.Zarezerwowane;
 public class Uzytkownik  implements Initializable {
     
     int KONTOID=2;
-    String LOG="klient1";
+    String LOG="blad";
+    String IMIE="blad";
+    String NAZWISKO="blad";
+    String ADRES="blad";
+    String PESEL="blad";
+    String TELEFON="blad";
+    String LOGIN="blad";
     
     @FXML
     Tab DANEOSOBOWE, HISTORIAREZERWACJI, ZAREZERWOWANE,REZERWACJE; 
@@ -187,7 +193,16 @@ public class Uzytkownik  implements Initializable {
         //Dimie.setText("IMIE");
          polaczenie_loty();
          Historia_polaczenie();
+         Anuluj_polaczenie2();
          System.out.println("Zalogowany: "+LOG);
+         
+         
+         Dimie.setText(IMIE);
+         Dnazwisko.setText(NAZWISKO);
+         Dadres.setText(ADRES);
+         Dpesel.setText(PESEL);
+         Dtelefon.setText(TELEFON);
+         Dlogin.setText(LOGIN);
     }
     
     
@@ -238,28 +253,49 @@ public class Uzytkownik  implements Initializable {
          Htable.setItems(rezerwacja);
      }
     private void Anuluj_polaczenie2(){
-        try{   
+        ZID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        Znr_rezerwacji.setCellValueFactory(new PropertyValueFactory<>("nr_rezerwacji"));
+        Znr_lotu.setCellValueFactory(new PropertyValueFactory<>("nr_lotu"));
+        Zstart.setCellValueFactory(new PropertyValueFactory<>("start"));
+        Zz.setCellValueFactory(new PropertyValueFactory<>("z"));
+        Zladowanie.setCellValueFactory(new PropertyValueFactory<>("ladowanie"));
+        Zw.setCellValueFactory(new PropertyValueFactory<>("w"));
+        Znr_miejsca.setCellValueFactory(new PropertyValueFactory<>("nr_miejsca"));
+        Zsamolot.setCellValueFactory(new PropertyValueFactory<>("samolot"));
+        Zstatus.setCellValueFactory(new PropertyValueFactory<>("status")); 
+         
+         
+        ObservableList<Zarezerwowane> rezerwacja = FXCollections.observableArrayList();
+        
+         
+         
+         try{   
         Class.forName("oracle.jdbc.driver.OracleDriver");  
         Connection con=DriverManager.getConnection(  
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
 
-        /*//step4 execute query  
-        ResultSet rs=stmt.executeQuery("select L.ID_LOT, L.NUMER_LOTU, (SELECT MODEL FROM SAMOLOTY WHERE ID_SAMOLOT=L.ID_SAMOLOT), L.DOSTEPNE_MIEJSCA, L.STARTOWANIE, L.LADOWANIE, L.POWROT, L.STATUS, L.Z, L.DO from LOTY L,SAMOLOTY WHERE NUMER_LOTU='"+ZWnrlotu.getText()+"' OR DO='"+ZWmiejscowosc.getText()+"'"); 
+        //step4 execute query  
+        ResultSet rs=stmt.executeQuery("SELECT R.NUMER_LOTU, (SELECT MODEL FROM SAMOLOTY WHERE ID_SAMOLOT=L.ID_SAMOLOT), L.STARTOWANIE, L.LADOWANIE, L.STATUS, L.Z, L.DO, R.NUMER_MIEJSCA, R.ID_KLIENT, R.NUMER_REZERWACJI FROM REZERWACJE R,LOTY L, SAMOLOTY S WHERE R.ID_KLIENT='patryk'"); 
         while(rs.next()){
-            System.out.println(rs.getInt(1)+"  "+rs.getInt(2)+"  "+rs.getString(3)+"  "+rs.getInt(4)+"  "+rs.getString(5) +"  "+rs.getString(6) +"  "+rs.getString(7) +"  "+rs.getString(8) +"  "+rs.getString(9) +"  "+rs.getString(10));
-            Zarezerwowane zar = new Zarezerwowane(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(3),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+            //System.out.println("       NUMER-LOTU , MODEL,               STARTOWANIE         LADOWANIE        STATUS                  Z                    DO                         NRMIEJSCA      IDKLIENT                   NRREZERWACJA      ");
+            System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5) +"  "+rs.getString(6) +"  "+rs.getString(7) +"  "+rs.getString(8) +"  "+rs.getString(9) +"  "+rs.getString(10));
+            Zarezerwowane zar = new Zarezerwowane(0,rs.getString(10),rs.getString(1),rs.getString(8),rs.getString(3),rs.getString(6),rs.getString(4),rs.getString(7),rs.getString(2),rs.getString(5));
         
             rezerwacja.add(zar);  
 
-         }*/
+         }
         con.close();  
-           System.out.println("Anuluj polaczenie2");
+           System.out.println("Wczytano historie połączeń.");
         }
         catch(Exception e)
         { 
             System.out.println(e);
         } 
+        
+         
+        
+         Ztable.setItems(rezerwacja);
     } 
     
     private void Anuluj_polaczenie(){
@@ -286,17 +322,18 @@ public class Uzytkownik  implements Initializable {
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
 
-        /*//step4 execute query  
-        ResultSet rs=stmt.executeQuery("select L.ID_LOT, L.NUMER_LOTU, (SELECT MODEL FROM SAMOLOTY WHERE ID_SAMOLOT=L.ID_SAMOLOT), L.DOSTEPNE_MIEJSCA, L.STARTOWANIE, L.LADOWANIE, L.POWROT, L.STATUS, L.Z, L.DO from LOTY L,SAMOLOTY WHERE NUMER_LOTU='"+ZWnrlotu.getText()+"' OR DO='"+ZWmiejscowosc.getText()+"'"); 
+        //step4 execute query  
+        ResultSet rs=stmt.executeQuery("SELECT R.NUMER_LOTU, (SELECT MODEL FROM SAMOLOTY WHERE ID_SAMOLOT=L.ID_SAMOLOT), L.STARTOWANIE, L.LADOWANIE, L.STATUS, L.Z, L.DO, R.NUMER_MIEJSCA, R.ID_KLIENT, R.NUMER_REZERWACJI FROM REZERWACJE R,LOTY L, SAMOLOTY S WHERE R.ID_KLIENT='patryk'"); 
         while(rs.next()){
-            System.out.println(rs.getInt(1)+"  "+rs.getInt(2)+"  "+rs.getString(3)+"  "+rs.getInt(4)+"  "+rs.getString(5) +"  "+rs.getString(6) +"  "+rs.getString(7) +"  "+rs.getString(8) +"  "+rs.getString(9) +"  "+rs.getString(10));
-            Zarezerwowane zar = new Zarezerwowane(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(3),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+            //System.out.println("       NUMER-LOTU , MODEL,               STARTOWANIE         LADOWANIE        STATUS                  Z                    DO                         NRMIEJSCA      IDKLIENT                   NRREZERWACJA      ");
+            System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+"  "+rs.getString(5) +"  "+rs.getString(6) +"  "+rs.getString(7) +"  "+rs.getString(8) +"  "+rs.getString(9) +"  "+rs.getString(10));
+            Zarezerwowane zar = new Zarezerwowane(0,rs.getString(10),rs.getString(1),rs.getString(8),rs.getString(3),rs.getString(6),rs.getString(4),rs.getString(7),rs.getString(2),rs.getString(5));
         
             rezerwacja.add(zar);  
 
-         }*/
+         }
         con.close();  
-           System.out.println("Anuluj polaczenie");
+           System.out.println("Wczytano historie połączeń.");
         }
         catch(Exception e)
         { 
