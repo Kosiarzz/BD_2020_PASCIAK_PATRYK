@@ -193,7 +193,7 @@ public class pracownik implements Initializable {
     @FXML
     private void wyszukaj(){
         
-        m1.setFill(Color.GREY);
+        miejsca(2);
         m2.setFill(Color.CHARTREUSE);
         m3.setFill(Color.RED);
         System.out.println("Wyszukaj");
@@ -207,31 +207,32 @@ public class pracownik implements Initializable {
     }
     
     
-    public void miejsca(String mi, int nrmi ){
-        if("Dostepne".equals(mi) && nrmi==1){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==2){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==3){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==4){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==5){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==6){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==7){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==8){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==9){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==10){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==11){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==12){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==13){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==14){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==15){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==16){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==17){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==18){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==19){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==20){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==21){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==22){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==23){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}
-        if("Dostepne".equals(mi) && nrmi==24){m1.setFill(Color.GREEN);}else{m1.setFill(Color.GREY);}      
+    public void miejsca(int nrmi ){
+        if(nrmi==1) m1.setFill(Color.RED);
+        if(nrmi==2) m2.setFill(Color.RED);
+        if(nrmi==3) m3.setFill(Color.RED);
+        if(nrmi==4) m4.setFill(Color.RED);
+        if(nrmi==5) m5.setFill(Color.RED);
+        if(nrmi==6) m6.setFill(Color.RED);
+        if(nrmi==7) m7.setFill(Color.RED);
+        if(nrmi==8) m8.setFill(Color.RED);
+        if(nrmi==9) m9.setFill(Color.RED);
+        if(nrmi==10) m10.setFill(Color.RED);
+        if(nrmi==11) m11.setFill(Color.RED);
+        if(nrmi==12) m12.setFill(Color.RED);
+        if(nrmi==13) m13.setFill(Color.RED);
+        if(nrmi==14) m14.setFill(Color.RED);
+        if(nrmi==15) m15.setFill(Color.RED);
+        if(nrmi==16) m16.setFill(Color.RED);
+        if(nrmi==17) m17.setFill(Color.RED);
+        if(nrmi==18) m18.setFill(Color.RED);
+        if(nrmi==19) m19.setFill(Color.RED);
+        if(nrmi==20) m20.setFill(Color.RED);
+        if(nrmi==21) m21.setFill(Color.RED);
+        if(nrmi==22) m22.setFill(Color.RED);
+        if(nrmi==23) m23.setFill(Color.RED);
+        if(nrmi==24) m24.setFill(Color.RED);
+             
     }
     
     

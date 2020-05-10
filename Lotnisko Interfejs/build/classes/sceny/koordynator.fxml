@@ -213,7 +213,7 @@
                   </TextField>
                   <TableView fx:id="Dtable1" layoutX="28.0" layoutY="87.0" prefHeight="281.0" prefWidth="227.0">
                      <columns>
-                        <TableColumn fx:id="DID1" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="DID1" prefWidth="75.0" text="ID" visible="false" />
                         <TableColumn fx:id="Dmodel1" prefWidth="75.0" text="Model" />
                         <TableColumn fx:id="Dmiejsc1" prefWidth="75.0" text="Ilość miejsc" />
                         <TableColumn fx:id="Drodzaj1" prefWidth="75.0" text="Rodzaj" />
@@ -300,6 +300,14 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
+                  <Button layoutX="361.0" layoutY="431.0" mnemonicParsing="false" onAction="#Uodswiez" style="-fx-background-color: #38b0d1;" text="Odśwież" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
         </content>
@@ -308,16 +316,17 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView layoutX="98.0" layoutY="90.0" prefHeight="341.0" prefWidth="604.0" style="-fx-border-color: #2e6ef0;">
+                  <TableView fx:id="Wtable" layoutX="98.0" layoutY="90.0" prefHeight="341.0" prefWidth="604.0" style="-fx-border-color: #2e6ef0;">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Nr lotu" />
-                        <TableColumn prefWidth="75.0" text="Start" />
-                        <TableColumn prefWidth="75.0" text="Lądowanie" />
-                        <TableColumn prefWidth="75.0" text="Powrót" />
-                        <TableColumn prefWidth="93.0" text="Do" />
-                        <TableColumn prefWidth="57.0" text="Miejsc" />
-                        <TableColumn prefWidth="75.0" text="Samolot" />
-                        <TableColumn prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="Wnr_lotu" prefWidth="75.0" text="Nr lotu" />
+                        <TableColumn fx:id="Wstart" prefWidth="75.0" text="Start" />
+                        <TableColumn fx:id="Wladowanie" prefWidth="75.0" text="Lądowanie" />
+                        <TableColumn fx:id="Wpowrot" prefWidth="75.0" text="Powrót" />
+                        <TableColumn fx:id="Wdo" prefWidth="93.0" text="Do" />
+                        <TableColumn fx:id="Wmiejsc" prefWidth="57.0" text="Miejsc" />
+                        <TableColumn fx:id="Wsamolot" prefWidth="75.0" text="Samolot" />
+                        <TableColumn fx:id="Wstatus" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="WID" prefWidth="75.0" text="Column X" visible="false" />
                      </columns>
                   </TableView>
                   <ImageView fitHeight="76.0" fitWidth="260.0" layoutX="270.0" layoutY="14.0" pickOnBounds="true">
@@ -325,7 +334,7 @@
                         <Image url="@../img/LogoLOT.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="599.0" layoutY="496.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
+                  <Button layoutX="599.0" layoutY="496.0" mnemonicParsing="false" onAction="#Wwyszukajb" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -333,7 +342,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TextField layoutX="42.0" layoutY="502.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Wlot" layoutX="42.0" layoutY="502.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -343,12 +352,12 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="336.0" layoutY="449.0" text="Wybierz lot z listy!" textAlignment="CENTER" textFill="RED">
+                  <Label fx:id="Wblad" layoutX="336.0" layoutY="449.0" text="Wybierz lot z listy!" textAlignment="CENTER" textFill="RED" visible="false">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="223.0" layoutY="501.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Wmiej" layoutX="223.0" layoutY="501.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -358,7 +367,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="400.0" layoutY="501.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Wstat" layoutX="400.0" layoutY="501.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -373,6 +382,14 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
+                  <Button layoutX="614.0" layoutY="446.0" mnemonicParsing="false" onAction="#Wodswiez" style="-fx-background-color: #38b0d1;" text="Odśwież" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children></AnchorPane>
       </content>
     </Tab>

@@ -51,10 +51,18 @@ public class rejestracja implements Initializable {
             blad.setVisible(false);
             if(sprawdzenie_haslo())
             {
+                if(pesel.getText().matches("[0-9]+") && telefon.getText().matches("[0-9]+") && sprawdzenie_pesel())
+                {
                 System.out.println("Hasła poprawne.");
                 System.out.println("Tworzenie konta...");
                 blad.setVisible(false);
                 polaczenie();
+                }
+                else
+                {
+                    blad.setText("Niepoprawny pesel lub telefon!");
+                    blad.setVisible(true);
+                }
             }
             else
             {
@@ -144,6 +152,36 @@ public class rejestracja implements Initializable {
             Connection connection = DriverManager.getConnection(
             "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
             CallableStatement cstmt = connection.prepareCall("{?=call HASLO('"+shaslo+"','"+sphaslo+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+    
+    private boolean sprawdzenie_pesel(){
+            //slogin, simie, snazwisko, sadres, spesel, stelefon, shaslo, sphaslo;
+          String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call PESEL('"+pesel.getText()+"','"+telefon.getText()+"')}");
             cstmt.registerOutParameter(1, Types.VARCHAR);
             
             cstmt.execute();

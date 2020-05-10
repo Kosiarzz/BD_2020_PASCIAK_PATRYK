@@ -72,13 +72,28 @@ public class koordynator  implements Initializable {
     @FXML
     Label Ublad;
     
-    int UsunID;
+    int UsunID=-1;
     
     @FXML
     private TableView<LOTY> Utable;
     
     @FXML
     private TableColumn<?, ?> Unr_lotu,Ustart, Uladowanie, Upowrot, Udo, Umiejsc, Usamolot, Ustatus, UID;
+    
+    //Wyszukaj
+    
+    @FXML
+    TextField Wlot,Wstat,Wmiej;
+    
+    @FXML
+    Label Wblad;
+    
+    @FXML
+    private TableView<LOTY> Wtable;
+    
+    @FXML
+    private TableColumn<?, ?> Wnr_lotu,Wstart, Wladowanie, Wpowrot, Wdo, Wmiejsc, Wsamolot, Wstatus, WID;
+    
     
     
     //////////////////////////DODAJ LOT/////////////////
@@ -145,7 +160,42 @@ public class koordynator  implements Initializable {
     
     @FXML
     private void Uusun(){
+        if(UsunID>-1)
+        {
+        Ublad.setVisible(false);
+        usun_lot();
         System.out.println("Usuwam");
+        }
+        else
+        {
+            Ublad.setText("Wyierz pozycję z listy!");
+            Ublad.setVisible(true);
+        }
+    }
+    
+    @FXML
+    private void Uodswiez(){
+        Usunpolaczenie();
+    }
+    
+    ///////////////WYSZUKAJ////////////////////////////
+    @FXML
+    private void Wwyszukajb(){
+        if(wyszukajspr())
+        {
+            Wblad.setVisible(false);
+            Wwyszukaj();
+        }
+        else
+        {
+            Wblad.setText("Podaj jakiś parametr!");
+            Wblad.setVisible(true);
+        }
+    }
+    
+    @FXML
+    private void Wodswiez(){
+        Wyszukajpolaczenie();
     }
     
     ////////////////WYLOGUJ/////////////////////////////////
@@ -160,8 +210,9 @@ public class koordynator  implements Initializable {
         Dodaj_samoloty2();
         wstaw_tekst_do_pola_samolot();
         wstaw_tekst_do_pola_samolot2();
-        
+        wstaw_tekst_do_usun();
         Usunpolaczenie();
+        Wyszukajpolaczenie();
     }
     
     
@@ -375,6 +426,21 @@ public class koordynator  implements Initializable {
         });
     }
     
+     private void wstaw_tekst_do_usun()
+    {
+        Utable.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                LOTY odd = Utable.getItems().get(Utable.getSelectionModel().getSelectedIndex());
+                UsunID = odd.getID_LOT();
+                System.out.println(UsunID);
+                
+            }
+        });
+    }
+    
     private void polaczenie_Ewyszukaj(){
         
         
@@ -479,17 +545,17 @@ public class koordynator  implements Initializable {
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
             System.out.println(Enr_lotu.getText());
-        ResultSet rs=stmt.executeQuery("SELECT * FROM LOTY"); 
+        ResultSet rs=stmt.executeQuery("SELECT L.ID_LOT,L.NUMER_LOTU,L.ID_SAMOLOT,L.DOSTEPNE_MIEJSCA,L.STARTOWANIE,L.LADOWANIE,L.POWROT,L.STATUS,L.Z,L.DO,S.ID_SAMOLOT,S.MODEL FROM LOTY L, SAMOLOTY S WHERE L.ID_SAMOLOT=S.ID_SAMOLOT"); 
          while(rs.next()){
-            System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10));
+            //System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10));
             
-            LOTY lot = new LOTY(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(3),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+            LOTY lot = new LOTY(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(12),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
         
             loty.add(lot);  
             
          } 
         
-        con.close();  
+        con.close();    
            System.out.println("KOniec połaczenia");
         }
         catch(Exception e)
@@ -514,18 +580,17 @@ public class koordynator  implements Initializable {
          
          
         ObservableList<LOTY> loty = FXCollections.observableArrayList();
-        
          try{   
         Class.forName("oracle.jdbc.driver.OracleDriver");  
         Connection con=DriverManager.getConnection(  
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
             System.out.println(Enr_lotu.getText());
-        ResultSet rs=stmt.executeQuery("SELECT * FROM LOTY WHERE NUMER_LOTU='"+Unumer.getText()+"'"); 
+         ResultSet rs=stmt.executeQuery("SELECT L.ID_LOT,L.NUMER_LOTU,L.ID_SAMOLOT,L.DOSTEPNE_MIEJSCA,L.STARTOWANIE,L.LADOWANIE,L.POWROT,L.STATUS,L.Z,L.DO,S.ID_SAMOLOT,S.MODEL FROM LOTY L, SAMOLOTY S WHERE L.ID_SAMOLOT=S.ID_SAMOLOT AND L.NUMER_LOTU='"+Unumer.getText()+"'"); 
          while(rs.next()){
-            System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10));
+            //System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10));
             
-            LOTY lot = new LOTY(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(3),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+            LOTY lot = new LOTY(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(12),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
         
             loty.add(lot);  
             
@@ -581,6 +646,136 @@ public class koordynator  implements Initializable {
             Connection connection = DriverManager.getConnection(
             "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
             CallableStatement cstmt = connection.prepareCall("{?=call NUMERLOTU('"+Unumer.getText()+"')}");
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            
+            cstmt.execute();
+            wynik=cstmt.getString(1);
+            //System.out.println("Wynik = "+wynik);          
+            connection.close();
+            
+        } catch(Exception e){ 
+            System.out.println(e); 
+        }
+         
+        if("TRUE".equals(wynik))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        
+    }
+    
+    public void usun_lot(){
+        try{   
+        Class.forName("oracle.jdbc.driver.OracleDriver");  
+        Connection con=DriverManager.getConnection(  
+        "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
+        Statement stmt=con.createStatement();  
+        stmt.executeUpdate("DELETE FROM LOTY WHERE ID_LOT='"+UsunID+"'");
+        
+        con.close();  
+           System.out.println("Usunięto");
+        }
+        catch(Exception e)
+        { 
+            System.out.println(e);
+        }
+    }
+    
+    private void Wyszukajpolaczenie(){
+        
+        Wnr_lotu.setCellValueFactory(new PropertyValueFactory<>("NUMER_LOTU"));
+        Wstart.setCellValueFactory(new PropertyValueFactory<>("startowanie"));
+        Wladowanie.setCellValueFactory(new PropertyValueFactory<>("ladowanie"));
+        Wpowrot.setCellValueFactory(new PropertyValueFactory<>("powrot"));
+        Wmiejsc.setCellValueFactory(new PropertyValueFactory<>("DOSTEPNE_MIEJSCA"));
+        Wsamolot.setCellValueFactory(new PropertyValueFactory<>("model"));
+        Wstatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        WID.setCellValueFactory(new PropertyValueFactory<>("ID_LOT")); 
+        Wdo.setCellValueFactory(new PropertyValueFactory<>("DO")); 
+         
+         
+        ObservableList<LOTY> lotyu = FXCollections.observableArrayList();
+        
+         try{   
+        Class.forName("oracle.jdbc.driver.OracleDriver");  
+        Connection con=DriverManager.getConnection(  
+        "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
+        Statement stmt=con.createStatement();  
+        System.out.println(Enr_lotu.getText());
+        ResultSet rs=stmt.executeQuery("SELECT L.ID_LOT,L.NUMER_LOTU,L.ID_SAMOLOT,L.DOSTEPNE_MIEJSCA,L.STARTOWANIE,L.LADOWANIE,L.POWROT,L.STATUS,L.Z,L.DO,S.ID_SAMOLOT,S.MODEL FROM LOTY L, SAMOLOTY S WHERE L.ID_SAMOLOT=S.ID_SAMOLOT"); 
+         while(rs.next()){
+            //System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10));
+            
+            LOTY lots = new LOTY(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(12),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+        
+            lotyu.add(lots);  
+            
+         } 
+        
+        con.close();  
+           System.out.println("KOniec połaczenia");
+        }
+        catch(Exception e)
+        { 
+            System.out.println(e);
+        }
+         Wtable.setItems(lotyu);
+    }
+    
+    private void Wwyszukaj(){
+        
+        Wnr_lotu.setCellValueFactory(new PropertyValueFactory<>("NUMER_LOTU"));
+        Wstart.setCellValueFactory(new PropertyValueFactory<>("startowanie"));
+        Wladowanie.setCellValueFactory(new PropertyValueFactory<>("ladowanie"));
+        Wpowrot.setCellValueFactory(new PropertyValueFactory<>("powrot"));
+        Wmiejsc.setCellValueFactory(new PropertyValueFactory<>("DOSTEPNE_MIEJSCA"));
+        Wsamolot.setCellValueFactory(new PropertyValueFactory<>("model"));
+        Wstatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        WID.setCellValueFactory(new PropertyValueFactory<>("ID_LOT")); 
+        Wdo.setCellValueFactory(new PropertyValueFactory<>("DO")); 
+         
+         
+        ObservableList<LOTY> loty = FXCollections.observableArrayList();
+         try{   
+        Class.forName("oracle.jdbc.driver.OracleDriver");  
+        Connection con=DriverManager.getConnection(  
+        "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
+        Statement stmt=con.createStatement();  
+            System.out.println(Enr_lotu.getText());
+         ResultSet rs=stmt.executeQuery("SELECT L.ID_LOT,L.NUMER_LOTU,L.ID_SAMOLOT,L.DOSTEPNE_MIEJSCA,L.STARTOWANIE,L.LADOWANIE,L.POWROT,L.STATUS,L.Z,L.DO,S.ID_SAMOLOT,S.MODEL FROM LOTY L, SAMOLOTY S WHERE L.ID_SAMOLOT=S.ID_SAMOLOT AND L.NUMER_LOTU='"+Wlot.getText()+"' OR L.ID_SAMOLOT=S.ID_SAMOLOT AND L.DO='"+Wmiej.getText()+"' OR L.ID_SAMOLOT=S.ID_SAMOLOT AND L.STATUS='"+Wstat.getText()+"'"); 
+         while(rs.next()){
+            //System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10));
+            
+            LOTY lot = new LOTY(rs.getInt(1),rs.getInt(2),rs.getInt(4),rs.getString(12),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+        
+            loty.add(lot);  
+            
+         } 
+        
+        con.close();  
+           System.out.println("KOniec połaczenia");
+        }
+        catch(Exception e)
+        { 
+            System.out.println(e);
+        }
+         Wtable.setItems(loty);
+    }
+    
+    
+    private boolean wyszukajspr(){
+        
+         String wynik="FALSE";
+          try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            Connection connection = DriverManager.getConnection(
+            "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
+            CallableStatement cstmt = connection.prepareCall("{?=call WYSZUKAJ('"+Wlot.getText()+"','"+Wmiej.getText()+"','"+Wstat.getText()+"')}");
             cstmt.registerOutParameter(1, Types.VARCHAR);
             
             cstmt.execute();
