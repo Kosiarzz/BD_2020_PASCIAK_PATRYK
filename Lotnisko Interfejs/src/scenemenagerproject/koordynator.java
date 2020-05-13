@@ -442,7 +442,7 @@ public class koordynator  implements Initializable {
     }
     
     private void polaczenie_Ewyszukaj(){
-        
+        int ID_SAMOL=0;
         
         try{   
         Class.forName("oracle.jdbc.driver.OracleDriver");  
@@ -450,21 +450,24 @@ public class koordynator  implements Initializable {
         "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011");  
         Statement stmt=con.createStatement();  
             System.out.println(Enr_lotu.getText());
-        ResultSet rs=stmt.executeQuery("SELECT L.ID_LOT,L.NUMER_LOTU,L.ID_SAMOLOT,L.DOSTEPNE_MIEJSCA,L.STARTOWANIE,L.LADOWANIE,L.POWROT,L.STATUS,L.Z,L.DO,S.ID_SAMOLOT,S.MODEL FROM LOTY L, SAMOLOTY S WHERE L.NUMER_LOTU='"+Enr_lotu.getText()+"'"); 
+        ResultSet rs=stmt.executeQuery("SELECT L.ID_LOT,L.NUMER_LOTU,L.ID_SAMOLOT,L.DOSTEPNE_MIEJSCA,L.STARTOWANIE,L.LADOWANIE,L.POWROT,L.STATUS,L.Z,L.DO,S.ID_SAMOLOT,S.MODEL FROM LOTY L, SAMOLOTY S WHERE L.NUMER_LOTU='"+Enr_lotu.getText()+"' AND L.ID_SAMOLOT=S.ID_SAMOLOT"); 
          while(rs.next()){
             System.out.println(rs.getInt(1)+" 2 "+rs.getString(2)+" 3 "+rs.getInt(3)+"  4 "+rs.getInt(4)+" 5 "+rs.getString(5) +" 6 "+rs.getString(6) +" 7 "+rs.getString(7) +" 8 "+rs.getString(8) +" 9 "+rs.getString(9) +" 10 "+rs.getString(10) +" "+rs.getInt(11) + " "+rs.getString(12));
             EIDLOT = rs.getInt(1);
-            Esamolot.setText(String.valueOf(rs.getString(12)));
+            
             Emiejsc.setText(String.valueOf(rs.getInt(4)));
             Estartd.setText(rs.getString(5));
             Eladowanied.setText(rs.getString(6));
             Epowrotd.setText(rs.getString(7));
             Estatus.setText(rs.getString(8));
             Emiejscowosc.setText(rs.getString(10));
-            
+            ID_SAMOL = rs.getInt(3);
          } 
-
-        
+         
+        ResultSet rs2=stmt.executeQuery("SELECT ID_SAMOLOT,MODEL FROM SAMOLOTY WHERE ID_SAMOLOT='"+ID_SAMOL+"'");
+        while(rs2.next()){
+            Esamolot.setText(rs2.getString(2));
+        }
         con.close();  
            System.out.println("KOniec połaczenia");
         }

@@ -19,7 +19,7 @@ import javafx.scene.control.PasswordField;
 
 public class logowanie implements Initializable {
     
-    public String LOGIN;
+    static String LOGIN;
     
     @FXML
     private TextField Login;
@@ -38,6 +38,10 @@ public class logowanie implements Initializable {
     
     String zlogin,zhaslo,zwybor;
     
+    static String getloginek(){
+        return LOGIN;
+    }
+    
     @FXML
     private void Zaloguj(){
         zlogin = Login.getText();
@@ -45,6 +49,7 @@ public class logowanie implements Initializable {
         logowanie log = new logowanie();
         LOGIN = zlogin;
         
+        System.out.println(LOGIN);
         System.out.println(zlogin+" "+zhaslo);
         if("Klient".equals(wybor.getText()) && sprawdzenie_danych())
         {
@@ -111,6 +116,14 @@ public class logowanie implements Initializable {
            blad.setText("Podany login lub hasło jest nieprawidłowe!");
            blad.setVisible(true);
         }
+        catch(SQLException ex)
+        {
+            if(ex.getErrorCode()==20000)
+            {
+                blad.setText("Uzupełnij wszystkie pola!");
+                blad.setVisible(true);
+            }
+        }
         catch(Exception e)
         { 
             System.out.println(e);
@@ -157,7 +170,7 @@ public class logowanie implements Initializable {
     
     private boolean sprawdzenie_danych(){
         
-        String login,haslo,wynik="FALSE";
+        String login,haslo="FALSE";
         login = Login.getText();
         haslo = Haslo.getText();
         
@@ -167,26 +180,29 @@ public class logowanie implements Initializable {
 
             Connection connection = DriverManager.getConnection(
             "jdbc:oracle:thin:@localhost:1521:xe","C##Patryk","Patryk011"); 
-            CallableStatement cstmt = connection.prepareCall("{?=call LOGOWANIE('"+login+"','"+haslo+"')}");
+            CallableStatement cstmt = connection.prepareCall("{?=call LOGOWANIE_WALIDACJA_DANYCH('"+login+"','"+haslo+"')}");
             cstmt.registerOutParameter(1, Types.VARCHAR);
             
             cstmt.execute();
-            wynik=cstmt.getString(1);
+            
             //System.out.println("Wynik = "+wynik);          
             connection.close();
             
-        } catch(Exception e){ 
-            System.out.println(e); 
-        }
-         
-        if("TRUE".equals(wynik))
+        } 
+         catch(SQLException ex){ 
+            System.out.println("EXCEPTION");
+            if(ex.getErrorCode()==20001)
             {
-                return true;
-            }
-            else
-            {
+                System.out.println("LOGIN");
+                blad.setText("Taki login już istnieje!");
+                blad.setVisible(true);
                 return false;
             }
+         }
+         catch(Exception e){ 
+            System.out.println(e); 
+        }
+         return true;
     }
     
 }  

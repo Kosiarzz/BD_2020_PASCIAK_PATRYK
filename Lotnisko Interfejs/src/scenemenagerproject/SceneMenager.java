@@ -34,6 +34,8 @@ public class SceneMenager {
             Parent root = FXMLLoader.load(SceneMenager.class.getResource(path));
             Scene scene = new Scene(root);
             stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("KorsarzLOT");
             stage.show();
         } catch (IOException ex) {
             System.err.println("Nie znaleziono pliku XML");

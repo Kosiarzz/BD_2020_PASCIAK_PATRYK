@@ -1,0 +1,8 @@
+Z niewiadomych przyczyn nie mogę wyeksportować całej bazy tylko pojednyczo 
+wszystkie funkcje i tabele. 
+Próbowałem kilka sposobów z internetu ale nic to nie dało.
+Po exporcie bazy plik jest pusty.
+Jeżeli wyexportowane tabele i funkcje są niewystarczające dla Pana to proszę
+o kontatk na meila.
+
+patryk.pasciakk@gmail.com
