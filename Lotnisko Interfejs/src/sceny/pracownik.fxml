@@ -32,7 +32,7 @@
                         <TableColumn fx:id="tMiejsc" prefWidth="57.0" text="Ilość miejsc" />
                         <TableColumn fx:id="tSamolot" prefWidth="75.0" text="Samolot" />
                         <TableColumn fx:id="tStatus" prefWidth="75.0" text="Status" />
-                        <TableColumn fx:id="tID" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="tID" prefWidth="75.0" text="ID" visible="false" />
                     </columns>
                   </TableView>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e0f2" height="260.0" layoutX="563.0" layoutY="52.0" stroke="BLACK" strokeType="INSIDE" width="196.0" />
@@ -256,7 +256,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor></TextField>
                   <Line endX="-1.0" endY="89.0" layoutX="515.0" layoutY="474.0" startX="-1.0" startY="-69.0" />
-                  <Label fx:id="Zblad" layoutX="529.0" layoutY="489.0" text="Wybierz lot z listy który chcesz zarezerwować!" textAlignment="CENTER" textFill="#f80000">
+                  <Label fx:id="Zblad" alignment="CENTER" layoutX="515.0" layoutY="489.0" prefHeight="19.0" prefWidth="288.0" text="Wybierz lot z listy który chcesz zarezerwować!" textAlignment="CENTER" textFill="#f80000" visible="false">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -274,12 +274,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label layoutX="620.0" layoutY="437.0" text="Podaj pesel">
+                  <Label layoutX="644.0" layoutY="438.0" text="Pesel">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Zpesel" layoutX="587.0" layoutY="463.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                  <TextField fx:id="Zpesel" disable="true" editable="false" layoutX="587.0" layoutY="463.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -297,6 +297,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
+                  <Label fx:id="Wwblad" layoutX="177.0" layoutY="399.0" text="Uzupełnij przynajmniej jedno pole!" textFill="RED" visible="false" />
                </children>
             </AnchorPane>
         </content>
@@ -368,7 +369,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="Dblad" layoutX="318.0" layoutY="459.0" text="Uzupełnij wszystkie pola!" textFill="RED">
+                  <Label fx:id="Dblad" layoutX="318.0" layoutY="459.0" text="Uzupełnij wszystkie pola!" textFill="RED" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -377,21 +378,10 @@
             </AnchorPane>
         </content>
       </Tab>
-    <Tab text="Usuń rezerwacje">
+    <Tab text="Wyszukaj/usuń rezerwacje">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView layoutX="14.0" layoutY="90.0" prefHeight="461.0" prefWidth="588.0">
-                    <columns>
-                      <TableColumn prefWidth="110.0" text="Numer rezerwacji" />
-                      <TableColumn prefWidth="75.0" text="Numer lotu" />
-                        <TableColumn prefWidth="75.0" text="Start" />
-                        <TableColumn prefWidth="75.0" text="Z" />
-                        <TableColumn prefWidth="75.0" text="Lądowanie" />
-                        <TableColumn prefWidth="75.0" text="W" />
-                        <TableColumn prefWidth="102.0" text="Numer miejsca" />
-                    </columns>
-                  </TableView>
                   <ImageView fitHeight="76.0" fitWidth="260.0" layoutX="270.0" layoutY="14.0" pickOnBounds="true">
                      <image>
                         <Image url="@../img/LogoLOT.png" />
@@ -415,7 +405,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Ublad2" layoutX="616.0" layoutY="415.0" text="Wybierz rezerwacje z listy!" textAlignment="CENTER" textFill="RED">
+                  <Label fx:id="Ublad2" layoutX="616.0" layoutY="415.0" text="Wybierz rezerwacje z listy!" textAlignment="CENTER" textFill="RED" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -438,11 +428,27 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="Ublad1" layoutX="663.0" layoutY="265.0" text="Podaj dane!" textAlignment="CENTER" textFill="RED">
+                  <Label fx:id="Ublad1" alignment="CENTER" layoutX="608.0" layoutY="265.0" prefHeight="21.0" prefWidth="190.0" text="Podaj dane!" textAlignment="CENTER" textFill="RED" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
+                  <TableView fx:id="Uutable" layoutX="14.0" layoutY="90.0" prefHeight="461.0" prefWidth="588.0">
+                    <columns>
+                      <TableColumn fx:id="Uunrr" prefWidth="110.0" text="Numer rezerwacji" />
+                      <TableColumn fx:id="Uunrl" prefWidth="75.0" text="Numer lotu" />
+                        <TableColumn fx:id="Uustart" prefWidth="75.0" text="Start" />
+                        <TableColumn fx:id="Uuz" prefWidth="75.0" text="Z" />
+                        <TableColumn fx:id="Uuladowanie" prefWidth="75.0" text="Lądowanie" />
+                        <TableColumn fx:id="Uuw" prefWidth="75.0" text="W" />
+                        <TableColumn fx:id="Uunrmiejsca" prefWidth="102.0" text="Numer miejsca" />
+                        <TableColumn fx:id="Uusamolot" prefWidth="75.0" text="Samolot" />
+                        <TableColumn fx:id="Uustatus" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="uuID" prefWidth="75.0" text="Column X" visible="false" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="14.0" layoutY="549.0" text="(A) Anulowana rezerwacja" />
+                  <Label layoutX="228.0" layoutY="549.0" text="(W) - Zwolnione miejsce" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -513,7 +519,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="Eblad" layoutX="532.0" layoutY="413.0" text="Uzupełnij wszystkie pola!" textFill="RED">
+                  <Label fx:id="Eblad" alignment="CENTER" layoutX="467.0" layoutY="413.0" prefHeight="21.0" prefWidth="296.0" text="Uzupełnij wszystkie pola!" textFill="RED" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -572,52 +578,6 @@
                </children></AnchorPane>
         </content>
       </Tab>
-    <Tab text="Historia lotów">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <TableView layoutX="14.0" layoutY="90.0" prefHeight="441.0" prefWidth="588.0">
-                     <columns>
-                        <TableColumn prefWidth="110.0" text="Numer rezerwacji" />
-                        <TableColumn prefWidth="75.0" text="Numer lotu" />
-                        <TableColumn prefWidth="75.0" text="Start" />
-                        <TableColumn prefWidth="75.0" text="Z" />
-                        <TableColumn prefWidth="75.0" text="Lądowanie" />
-                        <TableColumn prefWidth="75.0" text="W" />
-                        <TableColumn prefWidth="101.0" text="Numer miejsca" />
-                     </columns>
-                  </TableView>
-                  <ImageView fitHeight="76.0" fitWidth="260.0" layoutX="270.0" layoutY="14.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../img/LogoLOT.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="Hpesel" layoutX="625.0" layoutY="173.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </TextField>
-                  <Label layoutX="682.0" layoutY="148.0" text="Pesel">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="617.0" layoutY="453.0" mnemonicParsing="false" onAction="#Hwyszukaj" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label fx:id="Hblad" layoutX="658.0" layoutY="412.0" text="Podaj pesel!" textFill="RED">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-      </content>
-    </Tab>
       <Tab text="Wyloguj">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
