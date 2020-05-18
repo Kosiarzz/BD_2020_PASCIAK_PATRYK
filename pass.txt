@@ -4,8 +4,8 @@ Patryk011
 Klient/użytkownik:
 L: klient1 H: klient1
 
-Pracownik:
+Pracownik/Rezerwacje:
 L: prac1 H: prac1
 
-Koordynator:
+Pracownik/Koordynator:
 L: koor1 H: koor1

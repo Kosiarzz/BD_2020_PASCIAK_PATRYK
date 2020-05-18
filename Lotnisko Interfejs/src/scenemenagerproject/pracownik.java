@@ -137,7 +137,7 @@ public class pracownik implements Initializable {
         Etable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                klik=true;
+                klik = true;
                 DaneKlienta odd = Etable.getItems().get(Etable.getSelectionModel().getSelectedIndex());
                 EID = odd.getID();
                 Eimie.setText(String.valueOf(odd.getImie()));
@@ -163,45 +163,34 @@ public class pracownik implements Initializable {
 
     @FXML
     private void Ezmien() {
-        
-        if(klik)
-        {
-        if(Eimie.getText().length()>0 && Enazwisko.getText().length()>0 && Eadres.getText().length()>0 && Epesel.getText().length()>0 &&Etelefon.getText().length()>0)
-        {Eblad.setVisible(false);
-            if(Epesel.getText().length()==11 && Epesel.getText().matches("[0-9]+"))
-            {Eblad.setVisible(false);
-                if(Etelefon.getText().length()==9 && Etelefon.getText().matches("[0-9]+"))
-                {
+
+        if (klik) {
+            if (Eimie.getText().length() > 0 && Enazwisko.getText().length() > 0 && Eadres.getText().length() > 0 && Epesel.getText().length() > 0 && Etelefon.getText().length() > 0) {
+                Eblad.setVisible(false);
+                if (Epesel.getText().length() == 11 && Epesel.getText().matches("[0-9]+")) {
+                    Eblad.setVisible(false);
+                    if (Etelefon.getText().length() == 9 && Etelefon.getText().matches("[0-9]+")) {
                         Eblad.setVisible(false);
                         polaczenie_wyszukaj_zmien();
                         polaczenie_wyszukaj();
-                        klik=false;
-                }
-                else
-                {
-                    Eblad.setText("Niepoprawny numer telefonu!");
+                        klik = false;
+                    } else {
+                        Eblad.setText("Niepoprawny numer telefonu!");
+                        Eblad.setVisible(true);
+                    }
+                } else {
+                    Eblad.setText("Niepoprawny numer pesel!");
                     Eblad.setVisible(true);
-                }  
+                }
+            } else {
+                Eblad.setText("Uzupełnij wszystkie dane!");
+                Eblad.setVisible(true);
             }
-            else
-            {
-                Eblad.setText("Niepoprawny numer pesel!");
-                Eblad.setVisible(true); 
-            }
-        }
-        else
-        {
-            Eblad.setText("Uzupełnij wszystkie dane!");
-            Eblad.setVisible(true);
-        }
-        }
-        else
-        {
+        } else {
             Eblad.setText("Wybierz dane z tabeli!");
             Eblad.setVisible(true);
         }
-        
-        
+
     }
 
     ///////////////////////////////ZAKŁADKA USUŃ/////////////////////////////////
@@ -644,7 +633,7 @@ public class pracownik implements Initializable {
                     "jdbc:oracle:thin:@localhost:1521:xe", "C##Patryk", "Patryk011");
             Statement stmt = con.createStatement();
 
-        //step4 execute query  
+            //step4 execute query  
             // insert the data 
             stmt.executeUpdate("INSERT INTO KLIENT (IMIE,NAZWISKO,ADRES,PESEL,TELEFON,LOGIN)" + "VALUES ('" + Dimie.getText() + "', '" + Dnazwisko.getText() + "', '" + Dadres.getText() + "','" + Dpesel.getText() + "','" + Dtelefon.getText() + "','brak')");
 
@@ -760,7 +749,7 @@ public class pracownik implements Initializable {
                     "jdbc:oracle:thin:@localhost:1521:xe", "C##Patryk", "Patryk011");
             Statement stmt = con.createStatement();
 
-        //step4 execute query  
+            //step4 execute query  
             // insert the data 
             ResultSet rs = stmt.executeQuery("select L.ID_LOT, L.NUMER_LOTU, S.MODEL, L.DOSTEPNE_MIEJSCA, L.STARTOWANIE, L.LADOWANIE, L.POWROT, L.STATUS, L.Z, L.DO, S.ID_SAMOLOT, L.ID_SAMOLOT from LOTY L,SAMOLOTY S WHERE L.ID_SAMOLOT=S.ID_SAMOLOT AND NOT STATUS='Wykonany'");
             while (rs.next()) {
@@ -864,7 +853,7 @@ public class pracownik implements Initializable {
                     "jdbc:oracle:thin:@localhost:1521:xe", "C##Patryk", "Patryk011");
             Statement stmt = con.createStatement();
             System.out.println(EID);
-        //step4 execute query  
+            //step4 execute query  
             // insert the data  Eimie, Enazwisko, Eadres, Epesel, Etelefon;
             stmt.executeUpdate("UPDATE KLIENT SET IMIE='" + Eimie.getText() + "', NAZWISKO='" + Enazwisko.getText() + "', ADRES='" + Eadres.getText() + "', PESEL='" + Epesel.getText() + "', TELEFON='" + Etelefon.getText() + "' WHERE ID_KLIENT=" + EID);
             System.out.println("UPDATE");
@@ -1067,7 +1056,7 @@ public class pracownik implements Initializable {
     }
 
     private void Historia_polaczenie() {
-             //Uunrr, Uunrl, Uustart, Uuz, Uuladowanie, Uuw, Uunrmiejsca, uuID;
+        //Uunrr, Uunrl, Uustart, Uuz, Uuladowanie, Uuw, Uunrmiejsca, uuID;
 
         uuID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         Uunrr.setCellValueFactory(new PropertyValueFactory<>("nr_rezerwacji"));

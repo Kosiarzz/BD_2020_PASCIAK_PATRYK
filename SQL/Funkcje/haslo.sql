@@ -1,25 +1,22 @@
 --------------------------------------------------------
---  File created - œroda-maja-06-2020   
+--  File created - poniedzia³ek-maja-18-2020   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Function HASLO
 --------------------------------------------------------
 
-  CREATE OR REPLACE EDITIONABLE FUNCTION "C##PATRYK"."HASLO" --tworzenie funkcji o nazwwie FUNCTION1
----MIEJSCE NA ZMIENNE WEJŒCIOWE
+  CREATE OR REPLACE EDITIONABLE FUNCTION "C##PATRYK"."HASLO" 
 (haslo in VARCHAR2,
 phaslo in VARCHAR2)
-RETURN VARCHAR2 --co zwraca funkcja (typ danych)
+RETURN VARCHAR2
 IS
---zmienne lokalne funkcji
 
 BEGIN
---co chcemy aby funkcja wykonwywala
 IF (haslo=phaslo) then
-  RETURN 'TRUE'; --zwracana wartosc przez funkcje
+  RETURN 'TRUE';
 ELSE
-  RETURN 'FALSE'; --zwracana wartoœæ przez funkcje
+  RETURN 'FALSE';
   END IF;
-END HASLO; --koniec funkcji
+END HASLO;
 
 /

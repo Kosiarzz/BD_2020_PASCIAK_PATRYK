@@ -188,12 +188,6 @@ public class rejestracja implements Initializable {
                 blad.setText("Konto o takim loginie lub peselu juz istnieje!");
                 blad.setVisible(true);
             }
-            else
-            {
-                System.out.println("DZIALA");
-                blad.setText("DZIALA");
-                blad.setVisible(true);
-            }
             
         }
           catch(Exception e){ 

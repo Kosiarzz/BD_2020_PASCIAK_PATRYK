@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - œroda-maja-06-2020   
+--  File created - poniedzia³ek-maja-18-2020   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table LOTY
@@ -25,7 +25,12 @@
   TABLESPACE "USERS" ;
 REM INSERTING into C##PATRYK.LOTY
 SET DEFINE OFF;
-Insert into C##PATRYK.LOTY (ID_LOT,NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO) values ('2','0','1','30','2020/05/06 11:00:00','2020/05/06 12:00:00','2020/05/06 13:00:00','Dostêpny','KorsarzLOT','Krosno');
+Insert into C##PATRYK.LOTY (ID_LOT,NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO) values ('104','17','1','23','2020/05/29 10:32:00','2020/05/30 6:00:00','2020/05/31 18:11:00','Dostêpny','KorsarzLOT','Dubaj');
+Insert into C##PATRYK.LOTY (ID_LOT,NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO) values ('61','12','2','21','2020/05/21 9:00:00','2020/05/22 10:00:00','2020/05/23 21:00:00','Dostêpny','KorsarzLOT','Warszawa');
+Insert into C##PATRYK.LOTY (ID_LOT,NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO) values ('81','13','4','3','2020/05/28 23:00:30','2020/05/29 23:43:12','2020/05/31 14:17:31','Dostêpny','KorsarzLOT','Poznañ');
+Insert into C##PATRYK.LOTY (ID_LOT,NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO) values ('101','14','1','0','2020/05/21 12:32:00','2020/05/22 6:00:00','2020/05/26 11:13:00','Wykonany','KorsarzLOT','Nowy Jork');
+Insert into C##PATRYK.LOTY (ID_LOT,NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO) values ('102','15','3','17','2020/05/23 10:32:00','2020/05/24 6:00:00','2020/05/26 18:11:00','Dostêpny','KorsarzLOT','Londyn');
+Insert into C##PATRYK.LOTY (ID_LOT,NUMER_LOTU,ID_SAMOLOT,DOSTEPNE_MIEJSCA,STARTOWANIE,LADOWANIE,POWROT,STATUS,Z,DO) values ('103','16','5','23','2020/05/29 10:32:00','2020/05/30 6:00:00','2020/05/31 18:11:00','Dostêpny','KorsarzLOT','Pary¿');
 --------------------------------------------------------
 --  DDL for Index LOTY_PK
 --------------------------------------------------------

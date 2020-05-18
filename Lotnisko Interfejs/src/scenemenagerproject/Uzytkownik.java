@@ -98,7 +98,6 @@ public class Uzytkownik implements Initializable {
     boolean Rklik = false;
 
     //////////////////////////////ZAREZERWUJ/////////////////////////////////////
-
     @FXML
     private void Rwyszukaj() {
         System.out.println("Wyszukuje");
@@ -120,18 +119,15 @@ public class Uzytkownik implements Initializable {
                 Rblad.setVisible(false);
                 if (!miejsce_sprawdz(Integer.valueOf(Rnr_miejsca.getText()))) {
                     Rblad.setVisible(true);
-                    if(Integer.valueOf(Rnr_miejsca.getText())<1 || Integer.valueOf(Rnr_miejsca.getText())>24)
-                    {
+                    if (Integer.valueOf(Rnr_miejsca.getText()) < 1 || Integer.valueOf(Rnr_miejsca.getText()) > 24) {
                         Rblad.setText("Taki numer nie istnieje!");
-                        Rblad.setVisible(true); 
-                    }
-                    else
-                    {
-                    Rblad.setVisible(false);
-                    zarezerwuj();
-                    polaczenie_loty();
-                    Rnr_miejsca.setText("");
-                    Rklik = false;
+                        Rblad.setVisible(true);
+                    } else {
+                        Rblad.setVisible(false);
+                        zarezerwuj();
+                        polaczenie_loty();
+                        Rnr_miejsca.setText("");
+                        Rklik = false;
                     }
                 } else {
                     Rblad.setText("Miejsce zajęte!");
@@ -221,14 +217,14 @@ public class Uzytkownik implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DANE(); 
+        DANE();
         wstaw_tekst_do_pola_anuluj();
         //Dimie.setText("IMIE");
         polaczenie_loty();
         Historia_polaczenie();
         Anuluj_polaczenie();
         wstaw_tekst_do_pola_rezerw();
-        
+
         System.out.println("Zalogowany: " + LOGIN);
 
         Dimie.setText(IMIE);
@@ -583,7 +579,7 @@ public class Uzytkownik implements Initializable {
             Connection con = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:1521:xe", "C##Patryk", "Patryk011");
             Statement stmt = con.createStatement();
-           //UPDATE NR_REZERWACJI i MIEJSCA
+            //UPDATE NR_REZERWACJI i MIEJSCA
             //step4 execute query  
             String status = "Dostępny";
             numerRr = "(A) " + numerR;
@@ -831,7 +827,7 @@ public class Uzytkownik implements Initializable {
                     "jdbc:oracle:thin:@localhost:1521:xe", "C##Patryk", "Patryk011");
             Statement stmt = con.createStatement();
 
-        //step4 execute query  
+            //step4 execute query  
             // insert the data 
             ResultSet rs = stmt.executeQuery("select L.ID_LOT, L.NUMER_LOTU, S.MODEL, L.DOSTEPNE_MIEJSCA, L.STARTOWANIE, L.LADOWANIE, L.POWROT, L.STATUS, L.Z, L.DO, S.ID_SAMOLOT, L.ID_SAMOLOT from LOTY L,SAMOLOTY S WHERE L.ID_SAMOLOT=S.ID_SAMOLOT AND NOT STATUS='Wykonany'");
             while (rs.next()) {
@@ -936,7 +932,7 @@ public class Uzytkownik implements Initializable {
                             "jdbc:oracle:thin:@localhost:1521:xe", "C##Patryk", "Patryk011");
                     Statement stmt = con.createStatement();
 
-                //step4 execute query  
+                    //step4 execute query  
                     // insert the data 
                     ResultSet rs = stmt.executeQuery("SELECT NUMER_LOTU, NUMER_MIEJSCA FROM REZERWACJE WHERE NUMER_LOTU='" + odd.getNUMER_LOTU() + "'");
                     while (rs.next()) {
@@ -982,7 +978,7 @@ public class Uzytkownik implements Initializable {
             stmt.executeUpdate("UPDATE NUMERY_REZERWACJI SET NUMER_REZERWACJI=NUMER_REZERWACJI+1");
             stmt.executeUpdate("UPDATE LOTY SET DOSTEPNE_MIEJSCA=DOSTEPNE_MIEJSCA-1, STATUS='" + status + "' WHERE NUMER_LOTU='" + RLOT + "'");
 
-        //step4 execute query  
+            //step4 execute query  
             // insert the data 
             stmt.executeUpdate("INSERT INTO REZERWACJE (NUMER_LOTU,NUMER_MIEJSCA,ID_KLIENT,NUMER_REZERWACJI)" + "VALUES ('" + RLOT + "', '" + Rnr_miejsca.getText() + "', '" + PESEL + "', '" + numer_rez + "')");
 

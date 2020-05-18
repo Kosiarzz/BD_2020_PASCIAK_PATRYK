@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - œroda-maja-06-2020   
+--  File created - poniedzia³ek-maja-18-2020   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table SAMOLOTY
@@ -19,6 +19,12 @@
   TABLESPACE "USERS" ;
 REM INSERTING into C##PATRYK.SAMOLOTY
 SET DEFINE OFF;
+Insert into C##PATRYK.SAMOLOTY (ID_SAMOLOT,MODEL,ILOSC_MIEJSC,RODZAJ) values ('3','EMIRATES','24','P');
+Insert into C##PATRYK.SAMOLOTY (ID_SAMOLOT,MODEL,ILOSC_MIEJSC,RODZAJ) values ('4','AIRBUS','24','P');
+Insert into C##PATRYK.SAMOLOTY (ID_SAMOLOT,MODEL,ILOSC_MIEJSC,RODZAJ) values ('5','Boeing 777','24','P');
+Insert into C##PATRYK.SAMOLOTY (ID_SAMOLOT,MODEL,ILOSC_MIEJSC,RODZAJ) values ('6','Boeing 383','24','P');
+Insert into C##PATRYK.SAMOLOTY (ID_SAMOLOT,MODEL,ILOSC_MIEJSC,RODZAJ) values ('7','Boeing 555','24','P');
+Insert into C##PATRYK.SAMOLOTY (ID_SAMOLOT,MODEL,ILOSC_MIEJSC,RODZAJ) values ('2','LOT','24','P');
 Insert into C##PATRYK.SAMOLOTY (ID_SAMOLOT,MODEL,ILOSC_MIEJSC,RODZAJ) values ('1','AIR','24','P');
 --------------------------------------------------------
 --  Constraints for Table SAMOLOTY

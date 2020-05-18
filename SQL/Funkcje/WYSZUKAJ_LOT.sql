@@ -2,23 +2,23 @@
 --  File created - poniedzia³ek-maja-18-2020   
 --------------------------------------------------------
 --------------------------------------------------------
---  DDL for Function LOGOWANIE_WALIDACJA_DANYCH
+--  DDL for Function WYSZUKAJ_LOT
 --------------------------------------------------------
 
-  CREATE OR REPLACE EDITIONABLE FUNCTION "C##PATRYK"."LOGOWANIE_WALIDACJA_DANYCH" 
-(login in VARCHAR2,
-haslo in VARCHAR2)
+  CREATE OR REPLACE EDITIONABLE FUNCTION "C##PATRYK"."WYSZUKAJ_LOT" 
+(jeden in VARCHAR2,
+dwa in VARCHAR2)
 RETURN VARCHAR2
 IS
 blad exception;
 BEGIN
-IF (length(login)>0 and length(haslo)>0) then
+IF (length(jeden)>0 or length(dwa)>0) then
   RETURN 'TRUE';
 ELSE
   raise blad;
   END IF;
-exception
-when blad then RAISE_APPLICATION_ERROR(-20001, 'Uzupelnij wszystkie pola');
-END LOGOWANIE_WALIDACJA_DANYCH;
+  exception
+when blad then RAISE_APPLICATION_ERROR(-20000, 'Uzupelij pola!');
+END WYSZUKAJ_LOT;
 
 /

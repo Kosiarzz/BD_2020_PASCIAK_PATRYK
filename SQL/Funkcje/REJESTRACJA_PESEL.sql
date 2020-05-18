@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - œroda-maja-13-2020   
+--  File created - poniedzia³ek-maja-18-2020   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Function REJESTRACJA_PESEL
@@ -18,7 +18,7 @@ BEGIN
 INSERT INTO KLIENT (IMIE,NAZWISKO,ADRES,PESEL,TELEFON,LOGIN) VALUES(imie,nazwisko,adres,pesel,telefon,login);
 
 exception
-when DUP_VAL_ON_INDEX then RAISE_APPLICATION_ERROR(-20001, 'Taki pesel juz istnieje istnieje !');
+when DUP_VAL_ON_INDEX then RAISE_APPLICATION_ERROR(-20001, 'Taki pesel juz istnieje !');
   return NULL;
 END REJESTRACJA_PESEL;
 

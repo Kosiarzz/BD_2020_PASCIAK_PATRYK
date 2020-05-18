@@ -4,9 +4,8 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-
 public class main extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         SceneMenager.setStage(primaryStage);
@@ -15,13 +14,12 @@ public class main extends Application {
         SceneMenager.addScene("koordynator", "/sceny/koordynator.fxml");
         SceneMenager.addScene("logowanie", "/sceny/logowanie.fxml");
         SceneMenager.addScene("rejestracja", "/sceny/rejestracja.fxml");
-        
-        SceneMenager.renderScene("pracownik");
+
+        SceneMenager.renderScene("logowanie");
     }
 
- 
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

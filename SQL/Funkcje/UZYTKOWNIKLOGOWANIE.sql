@@ -2,23 +2,22 @@
 --  File created - poniedzia³ek-maja-18-2020   
 --------------------------------------------------------
 --------------------------------------------------------
---  DDL for Function LOGOWANIE_WALIDACJA_DANYCH
+--  DDL for Function UZYTKOWNIKLOGOWANIE
 --------------------------------------------------------
 
-  CREATE OR REPLACE EDITIONABLE FUNCTION "C##PATRYK"."LOGOWANIE_WALIDACJA_DANYCH" 
+  CREATE OR REPLACE EDITIONABLE FUNCTION "C##PATRYK"."UZYTKOWNIKLOGOWANIE" 
 (login in VARCHAR2,
-haslo in VARCHAR2)
+haslo in VARCHAR2,
+phaslo in VARCHAR2)
 RETURN VARCHAR2
 IS
-blad exception;
+ilosc NUMBER;
 BEGIN
-IF (length(login)>0 and length(haslo)>0) then
+IF (length(login)>0 and length(haslo)>0 and length(phaslo)>0) then
   RETURN 'TRUE';
 ELSE
-  raise blad;
+  RETURN 'FALSE';
   END IF;
-exception
-when blad then RAISE_APPLICATION_ERROR(-20001, 'Uzupelnij wszystkie pola');
-END LOGOWANIE_WALIDACJA_DANYCH;
+END UZYTKOWNIKLOGOWANIE;
 
 /
