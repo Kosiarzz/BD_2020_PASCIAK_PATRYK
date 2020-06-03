@@ -1,0 +1,11 @@
+Baza:
+L:C##Patryk H:Patryk011
+
+Klient/użytkownik:
+L: klient1 H: klient1
+
+Pracownik/Rezerwacje:
+L: prac1 H: prac1
+
+Pracownik/Koordynator:
+L: koor1 H: koor1

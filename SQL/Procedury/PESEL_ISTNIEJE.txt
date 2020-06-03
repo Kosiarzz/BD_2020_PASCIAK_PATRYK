@@ -1,0 +1,21 @@
+create or replace PROCEDURE PESEL_ISTNIEJE
+(pesell IN KLIENT.PESEL%TYPE)
+AS 
+licz NUMBER;
+blad exception;
+BEGIN
+    SELECT
+        count(*)
+    INTO licz
+    FROM
+        KLIENT
+    WHERE
+            PESEL = pesell;
+            
+    IF licz>0 THEN
+    raise blad;
+  END IF;
+  
+  exception
+when blad then RAISE_APPLICATION_ERROR(-20001, 'Taki pesel juz istnieje!');
+END PESEL_ISTNIEJE;

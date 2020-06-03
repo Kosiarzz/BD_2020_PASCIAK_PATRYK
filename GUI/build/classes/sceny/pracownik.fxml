@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #38b0d1;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenemenagerproject.pracownik">
+  <tabs>
+      <Tab text="Zarezerwuj">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tLoty" layoutX="14.0" layoutY="48.0" prefHeight="341.0" prefWidth="501.0" style="-fx-border-color: #2e6ef0;">
+                    <columns>
+                        <TableColumn fx:id="tNumerlotu" prefWidth="75.0" text="Numer lotu" />
+                      <TableColumn fx:id="tStart" prefWidth="75.0" text="Start" />
+                        <TableColumn fx:id="tMiejscestartu" prefWidth="75.0" text="Miejsce startu" />
+                      <TableColumn fx:id="tLadowanie" prefWidth="75.0" text="Lądowanie" />
+                        <TableColumn fx:id="tDo" prefWidth="93.0" text="Miejsce lądowanie" />
+                        <TableColumn fx:id="tMiejsc" prefWidth="57.0" text="Ilość miejsc" />
+                        <TableColumn fx:id="tSamolot" prefWidth="75.0" text="Samolot" />
+                        <TableColumn fx:id="tStatus" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="tID" prefWidth="75.0" text="ID" visible="false" />
+                    </columns>
+                  </TableView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e0f2" height="260.0" layoutX="563.0" layoutY="52.0" stroke="BLACK" strokeType="INSIDE" width="196.0" />
+                  <Line endX="6.0" endY="261.0" layoutX="558.0" layoutY="51.0" startX="6.0" startY="3.0" />
+                  
+                  <Rectangle fx:id="m1" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="578.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0" />
+                  <Rectangle fx:id="m5" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="578.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m9" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="578.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m13" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="578.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m17" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="578.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m21" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="578.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m2" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="619.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m6" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="619.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m10" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="619.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m14" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="619.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m18" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="619.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m22" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="619.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m3" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="679.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m4" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="720.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m7" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="679.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m8" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="720.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m11" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="679.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m12" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="720.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m15" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="679.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m16" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="720.0" layoutY="191.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m19" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="679.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m20" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="720.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m23" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="679.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Rectangle fx:id="m24" arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="27.0" layoutX="720.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Line endX="6.0" endY="245.79290771484375" layoutX="752.0" layoutY="65.0" startX="6.0" startY="-11.0" />
+                  <Text layoutX="588.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text layoutX="629.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text layoutX="689.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" />
+                  <Text layoutX="730.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" />
+                  <Text layoutX="588.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text layoutX="629.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text layoutX="689.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7" />
+                  <Text layoutX="730.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8" />
+                  <Text layoutX="588.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9" />
+                  <Text layoutX="626.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" />
+                  <Text layoutX="686.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11" />
+                  <Text layoutX="727.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" />
+                  <Text layoutX="585.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="13" />
+                  <Text layoutX="626.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="14" />
+                  <Text layoutX="686.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15" />
+                  <Text layoutX="727.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" />
+                  <Text layoutX="585.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17" />
+                  <Text layoutX="626.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="18" />
+                  <Text layoutX="686.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19" />
+                  <Text layoutX="727.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" />
+                  <Text layoutX="585.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="21" />
+                  <Text layoutX="626.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" />
+                  <Text layoutX="686.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23" />
+                  <Text layoutX="727.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24" />
+                  <Line endX="98.5" endY="-0.70709228515625" layoutX="659.0" layoutY="312.0" startX="-93.5" startY="-0.5" />
+                  <Line endX="100.0" layoutX="656.0" layoutY="53.0" startX="-91.5" startY="0.5" />
+                  <Label layoutX="603.0" layoutY="25.0" text="Dostępne miejsca">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="73.0" layoutY="418.0" text="Miejscowość docelowa">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="208.0" layoutY="517.0" mnemonicParsing="false" onAction="#wyszukaj" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1cff08" height="15.0" layoutX="585.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="14.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <TextField fx:id="ZWmiejscowosc" layoutX="78.0" layoutY="450.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f20b0b" height="15.0" layoutX="683.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="14.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Rectangle>
+                  <Label layoutX="602.0" layoutY="319.0" text="Dostępne" />
+                  <Label layoutX="703.0" layoutY="319.0" text="Zajęte" />
+                  <TextField fx:id="Znrmiejsca" layoutX="587.0" layoutY="407.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
+                  <Label layoutX="587.0" layoutY="377.0" text="Podaj numer miejsca">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="181.0" layoutY="25.0" text="Wybierz lot z listy">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="137.0" layoutY="481.0" text="Puste pola tekstowe nie będą brane pod uwagę." />
+                  <Label layoutX="336.0" layoutY="420.0" text="Numer lotu">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ZWnrlotu" layoutX="332.0" layoutY="450.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
+                  <Line endX="-1.0" endY="89.0" layoutX="515.0" layoutY="474.0" startX="-1.0" startY="-69.0" />
+                  <Label fx:id="Zblad" alignment="CENTER" layoutX="515.0" layoutY="489.0" prefHeight="19.0" prefWidth="288.0" text="Wybierz lot z listy który chcesz zarezerwować!" textAlignment="CENTER" textFill="#f80000" visible="false">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="38.0" fitWidth="106.0" layoutX="359.0" layoutY="6.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/LogoLOT.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="601.0" layoutY="517.0" mnemonicParsing="false" onAction="#zarezerwuj" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Zarezerwuj" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="644.0" layoutY="438.0" text="Pesel">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Zpesel" disable="true" editable="false" layoutX="587.0" layoutY="463.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Button layoutX="412.0" layoutY="521.0" mnemonicParsing="false" onAction="#ZOdswiez" style="-fx-background-color: #38b0d1;" text="Odśwież" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="nr_lotu" alignment="CENTER" layoutX="591.0" layoutY="358.0" prefHeight="19.0" prefWidth="143.0" text="Wybrany lot" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Wwblad" layoutX="177.0" layoutY="399.0" text="Uzupełnij przynajmniej jedno pole!" textFill="RED" visible="false" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Dodaj klienta">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="76.0" fitWidth="260.0" layoutX="270.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/LogoLOT.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="Dimie" layoutX="325.0" layoutY="141.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="204.0" layoutY="141.0" text="Imie">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Dnazwisko" layoutX="325.0" layoutY="208.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="188.0" layoutY="209.0" text="Nazwisko">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Dadres" layoutX="305.0" layoutY="272.0" prefHeight="27.0" prefWidth="191.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="145.0" layoutY="273.0" text="Adres zamieszkania">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Dpesel" layoutX="325.0" layoutY="330.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="203.0" layoutY="331.0" text="Pesel">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="195.0" layoutY="388.0" text="Telefon">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Dtelefon" layoutX="325.0" layoutY="387.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Button layoutX="317.0" layoutY="499.0" mnemonicParsing="false" onAction="#Ddodaj" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Dodaj" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="Dblad" layoutX="318.0" layoutY="459.0" text="Uzupełnij wszystkie pola!" textFill="RED" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+    <Tab text="Wyszukaj/usuń rezerwacje">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="76.0" fitWidth="260.0" layoutX="270.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/LogoLOT.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="619.0" layoutY="449.0" mnemonicParsing="false" onAction="#Uusun" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Anuluj rezerwacje" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <TextField fx:id="Unumer" layoutX="627.0" layoutY="153.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="684.0" layoutY="200.0" text="Pesel">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Ublad2" layoutX="616.0" layoutY="415.0" text="Wybierz rezerwacje z listy!" textAlignment="CENTER" textFill="RED" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Upesel" layoutX="627.0" layoutY="225.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="641.0" layoutY="128.0" text="Numer rezerwacji">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="619.0" layoutY="296.0" mnemonicParsing="false" onAction="#Uwyszukaj" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="Ublad1" alignment="CENTER" layoutX="608.0" layoutY="265.0" prefHeight="21.0" prefWidth="190.0" text="Podaj dane!" textAlignment="CENTER" textFill="RED" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="Uutable" layoutX="14.0" layoutY="90.0" prefHeight="461.0" prefWidth="588.0">
+                    <columns>
+                      <TableColumn fx:id="Uunrr" prefWidth="110.0" text="Numer rezerwacji" />
+                      <TableColumn fx:id="Uunrl" prefWidth="75.0" text="Numer lotu" />
+                        <TableColumn fx:id="Uustart" prefWidth="75.0" text="Start" />
+                        <TableColumn fx:id="Uuz" prefWidth="75.0" text="Z" />
+                        <TableColumn fx:id="Uuladowanie" prefWidth="75.0" text="Lądowanie" />
+                        <TableColumn fx:id="Uuw" prefWidth="75.0" text="W" />
+                        <TableColumn fx:id="Uunrmiejsca" prefWidth="102.0" text="Numer miejsca" />
+                        <TableColumn fx:id="Uusamolot" prefWidth="75.0" text="Samolot" />
+                        <TableColumn fx:id="Uustatus" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="uuID" prefWidth="75.0" text="Column X" visible="false" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="14.0" layoutY="549.0" text="(A) Anulowana rezerwacja" />
+                  <Label layoutX="228.0" layoutY="549.0" text="(W) - Zwolnione miejsce" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Edycja danych klienta">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="800.0">
+               <children>
+                  <TextField fx:id="Etelefon" layoutX="609.0" layoutY="292.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="487.0" layoutY="65.0" text="Imie">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Eimie" layoutX="608.0" layoutY="65.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="471.0" layoutY="126.0" text="Nazwisko">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Eadres" layoutX="588.0" layoutY="178.0" prefHeight="27.0" prefWidth="191.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="435.0" layoutY="179.0" text="Adres zamieszkania">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Enazwisko" layoutX="608.0" layoutY="125.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="486.0" layoutY="234.0" text="Pesel">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="478.0" layoutY="293.0" text="Telefon">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Epesel" layoutX="609.0" layoutY="233.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <ImageView fitHeight="29.0" fitWidth="148.0" layoutX="326.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/LogoLOT.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="531.0" layoutY="469.0" mnemonicParsing="false" onAction="#Ezmien" prefHeight="33.0" prefWidth="167.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Zmień dane" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="Eblad" alignment="CENTER" layoutX="467.0" layoutY="413.0" prefHeight="21.0" prefWidth="296.0" text="Uzupełnij wszystkie pola!" textFill="RED" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="Etable" layoutX="14.0" layoutY="46.0" prefHeight="280.0" prefWidth="411.0">
+                    <columns>
+                      <TableColumn fx:id="Etimie" prefWidth="75.0" text="Imie" />
+                      <TableColumn fx:id="Etnazwisko" prefWidth="75.0" text="Nazwisko" />
+                        <TableColumn fx:id="Etadres" prefWidth="112.0" text="Adres" />
+                        <TableColumn fx:id="Etpesel" prefWidth="74.0" text="Pesel" />
+                        <TableColumn fx:id="Ettelefon" prefWidth="74.0" text="Telefon" />
+                        <TableColumn fx:id="Etlogin" prefWidth="75.0" text="Login" />
+                        <TableColumn fx:id="EtID" prefWidth="75.0" text="Column X" visible="false" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="EWimie" layoutX="98.0" layoutY="360.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="EWnazwisko" layoutX="98.0" layoutY="426.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <TextField fx:id="EWpesel" layoutX="98.0" layoutY="495.0" style="-fx-background-color: white; -fx-border-color: #2e6ef0;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="36.0" layoutY="360.0" text="Imie">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="17.0" layoutY="426.0" text="Nazwisko">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="34.0" layoutY="495.0" text="Pesel">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="268.0" layoutY="423.0" mnemonicParsing="false" onAction="#EWwyszukaj" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyszukaj" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="122.0" layoutY="531.0" text="Puste pola tekstowe nie będą brane pod uwagę." />
+                  <Line endX="2.0" endY="174.0" layoutX="425.0" layoutY="388.0" startX="2.0" startY="-32.0" />
+               </children></AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Wyloguj">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="268.0" layoutY="237.0" text="Czy na pewno chcesz się wylogować?">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="133.0" fitWidth="472.0" layoutX="172.0" layoutY="41.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/LogoLOT.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="302.0" layoutY="286.0" mnemonicParsing="false" onAction="#wyloguj" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #1c8ce8; -fx-border-color: #2e6ef0;" text="Wyloguj" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

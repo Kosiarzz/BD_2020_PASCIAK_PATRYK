@@ -1,0 +1,21 @@
+create or replace PROCEDURE LOGIN_ISTNIEJE
+(loginn IN KLIENCI_LOGOWANIE.LOGIN%TYPE)
+AS 
+licz NUMBER;
+blad exception;
+BEGIN
+    SELECT
+        count(*)
+    INTO licz
+    FROM
+        KLIENCI_LOGOWANIE
+    WHERE
+            LOGIN = loginn;
+            
+    IF licz>0 THEN
+    raise blad;
+  END IF;
+  
+  exception
+when blad then RAISE_APPLICATION_ERROR(-20001, 'Taki login juz istnieje!');
+END LOGIN_ISTNIEJE;
