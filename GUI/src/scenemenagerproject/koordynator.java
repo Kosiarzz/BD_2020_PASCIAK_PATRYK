@@ -99,6 +99,9 @@ public class koordynator implements Initializable {
             Dblad.setVisible(false);
             System.out.println("Dodaje");
             dodajlot();
+           Dblad.setText("Lot został dodany!");
+            Dblad.setVisible(true);
+   
         } else {
             Dblad.setText("Uzupełnij wszystkie pola!");
             Dblad.setVisible(true);
@@ -112,6 +115,8 @@ public class koordynator implements Initializable {
             Ebzmiany.setVisible(false);
             System.out.println("Szukam");
             Ezmien();
+            Ebzmiany.setText("Dane został zmienione!");
+            Ebzmiany.setVisible(true);
         } else {
             Ebzmiany.setText("Uzupełnij wszystkie pola!");
             Ebzmiany.setVisible(true);
@@ -151,6 +156,9 @@ public class koordynator implements Initializable {
             Ublad.setVisible(false);
             usun_lot();
             System.out.println("Usuwam");
+            Ublad.setText("Lot został usunięty!");
+            Ublad.setVisible(true);
+            wstaw_tekst_do_usun();
         } else {
             Ublad.setText("Wyierz pozycję z listy!");
             Ublad.setVisible(true);

@@ -1039,7 +1039,7 @@ public class pracownik implements Initializable {
                 System.out.println("POLA");
                 Zblad.setText("Najpierw dodaj klienta!");
                 Zblad.setVisible(true);
-                return false;
+                return true;
             }
 
         } catch (Exception e) {
